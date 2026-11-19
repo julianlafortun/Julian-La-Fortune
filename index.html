@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Julian La Fortune — Human Rights & Child Advocate. Structural reform, child protection, public accountability, and legal-policy advocacy." />
   <title>Julian La Fortune — Human Rights & Child Advocate</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #050505;
       --surface: #0b0b0b;
       --surface-elevated: #111111;
+      --surface-hover: #161616;
       --text: #ffffff;
-      --text-secondary: #b8b8b8;
-      --text-muted: #787878;
+      --text-secondary: #bcbcbc;
+      --text-muted: #828282;
       --border: rgba(255, 255, 255, 0.14);
       --border-strong: rgba(255, 255, 255, 0.28);
       --accent-bg: #ffffff;
       --accent-text: #050505;
-      --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+      --focus-ring: #ffffff;
+      --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-serif: "Instrument Serif", Georgia, serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       --font-pronoun: "Times New Roman", Times, Georgia, serif;
+      --radius-pill: 999px;
+      --radius-sm: 2px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -33,25 +41,54 @@
 
     html {
       scroll-behavior: smooth;
-      background: var(--bg);
+      scroll-padding-top: 5.5rem;
+      background-color: var(--bg);
       color: var(--text);
+      font-size: 16px;
     }
 
     body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-display);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       position: relative;
     }
 
-    /* Subtle monochrome architectural grid + film grain */
-    body::before {
-      content: "";
+    :focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 1rem;
+      z-index: 100;
+      background: var(--accent-bg);
+      color: var(--accent-text);
+      padding: 0.65rem 1.1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: top 0.18s ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* Subtle monochrome architectural grid + grain */
+    .bg-grid {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -60,17 +97,17 @@
         linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
       background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse at 50% 20%, #000 35%, rgba(0, 0, 0, 0.45) 85%);
+      mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
     }
 
-    body::after {
-      content: "";
+    .bg-grain {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 1;
       opacity: 0.035;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.85) 0.6px, transparent 0.6px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.9) 0.6px, transparent 0.6px);
       background-size: 3px 3px;
     }
 
@@ -78,6 +115,13 @@
       position: relative;
       z-index: 2;
       width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
     }
 
     .container {
@@ -87,14 +131,15 @@
       padding: 0 2rem;
     }
 
-    /* Top Navigation Bar — completely flush at top of browser */
+    /* Top Navigation Bar */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 40;
       width: 100%;
       background: rgba(5, 5, 5, 0.92);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -119,6 +164,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .brand-mark-dot {
@@ -127,12 +173,13 @@
       background: var(--text);
       border-radius: 50%;
       display: inline-block;
+      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.5rem;
       list-style: none;
     }
 
@@ -140,30 +187,86 @@
       color: var(--text-secondary);
       text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      transition: color 0.2s ease;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
       white-space: nowrap;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active-link {
       color: var(--text);
+      border-bottom-color: var(--text);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 0.65rem;
+      flex-shrink: 0;
     }
 
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.25rem 2rem 1.75rem;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .mobile-drawer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      padding: 0.25rem 0;
+    }
+
+    .mobile-drawer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.65rem 1.15rem;
-      border-radius: 999px;
+      padding: 0.68rem 1.2rem;
+      border-radius: var(--radius-pill);
       font-family: var(--font-mono);
       font-size: 0.74rem;
       letter-spacing: 0.1em;
@@ -173,26 +276,36 @@
       border: 1px solid var(--border-strong);
       background: transparent;
       color: var(--text);
-      transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
       white-space: nowrap;
+      line-height: 1;
     }
 
     .btn:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.09);
       border-color: var(--text);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
     }
 
     .btn-primary {
       background: var(--accent-bg);
       color: var(--accent-text);
       border-color: var(--accent-bg);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .btn-primary:hover {
       background: #e6e6e6;
       border-color: #e6e6e6;
       color: var(--accent-text);
+    }
+
+    .btn-sm {
+      padding: 0.52rem 0.95rem;
+      font-size: 0.69rem;
     }
 
     /* Kinetic Ticker Banner */
@@ -206,10 +319,12 @@
     .ticker-track {
       display: flex;
       width: max-content;
-      animation: tickerScroll 28s linear infinite;
+      animation: tickerScroll 34s linear infinite;
+      will-change: transform;
     }
 
-    .ticker:hover .ticker-track {
+    .ticker:hover .ticker-track,
+    .ticker:focus-within .ticker-track {
       animation-play-state: paused;
     }
 
@@ -217,12 +332,13 @@
       display: flex;
       align-items: center;
       gap: 2.25rem;
-      padding: 0.65rem 1.125rem;
+      padding: 0.68rem 1.125rem;
       font-family: var(--font-mono);
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-secondary);
+      white-space: nowrap;
     }
 
     .ticker-sep {
@@ -242,7 +358,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.85fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.85fr);
       gap: 3rem;
       align-items: start;
     }
@@ -272,12 +388,13 @@
       height: 7px;
       border-radius: 50%;
       background: var(--text);
+      display: inline-block;
     }
 
     .hero-name {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(3.2rem, 7.2vw, 6.2rem);
+      font-size: clamp(3.1rem, 7.2vw, 6.1rem);
       line-height: 0.96;
       letter-spacing: -0.04em;
       text-transform: uppercase;
@@ -301,7 +418,7 @@
       font-family: var(--font-pronoun);
       font-style: italic;
       font-weight: 400;
-      font-size: 1rem;
+      font-size: 1.05rem;
       letter-spacing: 0.01em;
       text-transform: none;
       line-height: 1.2;
@@ -309,25 +426,61 @@
     }
 
     .hero-role {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-size: clamp(1.12rem, 2vw, 1.45rem);
       font-weight: 500;
       color: var(--text);
       letter-spacing: -0.01em;
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero-mission {
-      font-size: 1.05rem;
+      font-size: 1.04rem;
       line-height: 1.75;
       color: var(--text-secondary);
-      max-width: 64ch;
-      margin-bottom: 2.25rem;
+      max-width: 65ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero-mission + .hero-mission {
+      margin-bottom: 2.1rem;
     }
 
     .hero-cta-group {
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .metric-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     /* Profile Snapshot Card */
@@ -337,7 +490,7 @@
       padding: 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 1.35rem;
+      gap: 1.25rem;
     }
 
     .snapshot-header {
@@ -357,7 +510,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
-      padding-bottom: 1rem;
+      padding-bottom: 0.95rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -375,7 +528,7 @@
     }
 
     .snapshot-value {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text);
       line-height: 1.5;
     }
@@ -393,7 +546,7 @@
 
     /* Sections */
     .section {
-      padding: 4.5rem 0;
+      padding: 4.75rem 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -424,11 +577,56 @@
       color: var(--text);
     }
 
+    .section-lead {
+      max-width: 68ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.72;
+      margin-bottom: 2.25rem;
+    }
+
+    /* Mission Two-Column Breakdown */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mission-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .mission-panel-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .mission-panel-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .mission-panel p {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
     /* Filter Bar */
     .filter-bar {
       display: inline-flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
+      gap: 0.4rem;
       padding: 0.3rem;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -454,7 +652,7 @@
     .filter-btn.active {
       background: var(--accent-bg);
       color: var(--accent-text);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Pillars Grid */
@@ -476,6 +674,11 @@
       cursor: pointer;
       transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
       overflow: hidden;
+      text-align: left;
+    }
+
+    .pillar-card.is-hidden {
+      display: none;
     }
 
     .pillar-card::before {
@@ -492,7 +695,8 @@
       transition: opacity 0.25s ease;
     }
 
-    .pillar-card:hover {
+    .pillar-card:hover,
+    .pillar-card:focus-within {
       border-color: var(--border-strong);
       background: var(--surface-elevated);
       transform: translateY(-3px);
@@ -506,15 +710,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 0.75rem;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
     .pillar-title {
-      font-size: 1.35rem;
+      font-size: 1.32rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text);
@@ -523,9 +728,21 @@
     }
 
     .pillar-summary {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text-secondary);
       line-height: 1.65;
+    }
+
+    .pillar-deliverables {
+      margin-top: 1rem;
+      padding-left: 1.1rem;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .pillar-deliverables li + li {
+      margin-top: 0.3rem;
     }
 
     .pillar-footer {
@@ -539,6 +756,90 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text);
+    }
+
+    /* Methodology & Timeline Section */
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.015em;
+    }
+
+    .step-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.62;
+    }
+
+    .data-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    table.ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 680px;
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+    }
+
+    .ledger-table th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ledger-table td {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .ledger-table td strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .ledger-table tbody tr:last-child td {
+      border-bottom: none;
     }
 
     /* Legal & Recognition Section */
@@ -572,7 +873,7 @@
     .plaque-quote {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
       line-height: 1.25;
       color: var(--text);
       letter-spacing: -0.01em;
@@ -631,7 +932,7 @@
     }
 
     .affiliation-name {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 0.35rem;
@@ -643,11 +944,62 @@
       line-height: 1.6;
     }
 
+    /* FAQ / Protocols */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.35rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 1rem;
+    }
+
     /* Contact Section */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .contact-box {
@@ -671,17 +1023,88 @@
     }
 
     .contact-value {
-      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+      font-size: clamp(1.25rem, 2.2vw, 1.75rem);
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text);
       word-break: break-word;
     }
 
+    .contact-note {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
     .contact-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
+    }
+
+    .dispatch-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 0.96rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .form-status {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
     }
 
     /* Footer */
@@ -692,6 +1115,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
+      background: var(--bg);
     }
 
     .footer-inner {
@@ -702,16 +1126,47 @@
       gap: 1rem;
     }
 
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      list-style: none;
     }
 
-    .reveal.is-visible {
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* Scroll reveal — safe by default so content never remains stuck invisible */
+    .reveal {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+    }
+
+    .js-ready .reveal:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .ticker-track {
+        animation: none;
+      }
+      .reveal,
+      .js-ready .reveal:not(.is-visible) {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
 
     /* Modal */
@@ -719,7 +1174,7 @@
       position: fixed;
       inset: 0;
       z-index: 60;
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(6px);
       display: none;
       align-items: center;
@@ -733,7 +1188,9 @@
 
     .modal-dialog {
       width: 100%;
-      max-width: 600px;
+      max-width: 640px;
+      max-height: 88vh;
+      overflow-y: auto;
       background: var(--surface-elevated);
       border: 1px solid var(--border-strong);
       padding: 2rem;
@@ -757,16 +1214,17 @@
 
     .modal-close {
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
       color: var(--text);
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      padding: 0.35rem 0.7rem;
+      padding: 0.38rem 0.75rem;
       cursor: pointer;
     }
 
     .modal-close:hover {
       border-color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .modal-title {
@@ -777,10 +1235,22 @@
     }
 
     .modal-body {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.98rem;
+      line-height: 1.72;
       color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-points {
+      padding-left: 1.25rem;
+      color: var(--text);
+      font-size: 0.94rem;
+      line-height: 1.65;
       margin-bottom: 1.5rem;
+    }
+
+    .modal-points li + li {
+      margin-top: 0.45rem;
     }
 
     /* Toast notification */
@@ -793,9 +1263,10 @@
       color: var(--accent-text);
       font-family: var(--font-mono);
       font-size: 0.74rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.75rem 1.15rem;
+      padding: 0.78rem 1.2rem;
       opacity: 0;
       transform: translateY(10px);
       pointer-events: none;
@@ -807,22 +1278,38 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 1080px) {
+      .methodology-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 980px) {
       .hero-grid,
       .pillars-grid,
       .recognition-layout,
-      .contact-grid {
+      .contact-grid,
+      .mission-grid,
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .nav-links {
+      .nav-links,
+      .nav-actions {
         display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .container,
-      .topbar-inner {
+      .topbar-inner,
+      .mobile-drawer {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
       }
@@ -832,22 +1319,27 @@
         padding-bottom: 3rem;
       }
 
-      .section {
-        padding: 3.25rem 0;
+      .hero-metrics,
+      .methodology-grid {
+        grid-template-columns: 1fr;
       }
 
-      .nav-actions .btn:first-child {
-        display: none;
+      .section {
+        padding: 3.4rem 0;
       }
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
   <div class="page-shell">
     <header class="topbar">
       <div class="topbar-inner">
         <a href="#top" class="brand-mark">
-          <span class="brand-mark-dot"></span>
+          <span class="brand-mark-dot" aria-hidden="true"></span>
           <span>JULIAN LA FORTUNE // ADVOCACY</span>
         </a>
 
@@ -855,5 +1347,1051 @@
           <ul class="nav-links">
             <li><a href="#mission">Mission</a></li>
             <li><a href="#pillars">Pillars</a></li>
-            <li><a href="#recognition">Legal &amp; Recognition</a></li>
-            <li><a href="#affiliations">Affiliations</a></l
+            <li><a href="#methodology">Framework</a></li>
+            <li><a href="#recognition">Recognition</a></li>
+            <li><a href="#affiliations">Affiliations</a></li>
+            <li><a href="#faq">Protocols</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button type="button" class="btn btn-sm" id="copyEmailTopBtn">Copy Email</button>
+          <a href="#contact" class="btn btn-primary btn-sm">Direct Dispatch</a>
+        </div>
+
+        <button
+          type="button"
+          class="mobile-toggle"
+          id="mobileMenuBtn"
+          aria-expanded="false"
+          aria-controls="mobileDrawer"
+        >
+          Menu
+        </button>
+      </div>
+
+      <div class="mobile-drawer" id="mobileDrawer">
+        <ul class="mobile-drawer-links">
+          <li><a href="#mission" class="drawer-link">Mission</a></li>
+          <li><a href="#pillars" class="drawer-link">Pillars</a></li>
+          <li><a href="#methodology" class="drawer-link">Framework</a></li>
+          <li><a href="#recognition" class="drawer-link">Recognition</a></li>
+          <li><a href="#affiliations" class="drawer-link">Affiliations</a></li>
+          <li><a href="#faq" class="drawer-link">Protocols</a></li>
+          <li><a href="#contact" class="drawer-link">Contact</a></li>
+        </ul>
+        <div class="mobile-drawer-actions">
+          <button type="button" class="btn btn-sm" id="copyEmailDrawerBtn">Copy Email</button>
+          <a href="#contact" class="btn btn-primary btn-sm drawer-link">Direct Dispatch</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" role="region" aria-label="Advocacy Highlights Ticker">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>Human Rights & Child Protection</span>
+          <span class="ticker-sep" aria-hidden="true">//</span>
+          <span>Institutional Accountability</span>
+          <span class="ticker-sep" aria-hidden="true">//</span>
+          <span>Safeguarding Standards & Policy Reform</span>
+          <span class="ticker-sep" aria-hidden="true">//</span>
+          <span>Dignity, Due Process & Equity</span>
+          <span class="ticker-sep" aria-hidden="true">//</span>
+          <span>Public Interest Documentation</span>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+          <span>Human Rights & Child Protection</span>
+          <span class="ticker-sep">//</span>
+          <span>Institutional Accountability</span>
+          <span class="ticker-sep">//</span>
+          <span>Safeguarding Standards & Policy Reform</span>
+          <span class="ticker-sep">//</span>
+          <span>Dignity, Due Process & Equity</span>
+          <span class="ticker-sep">//</span>
+          <span>Public Interest Documentation</span>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow-row">
+                <span>Public Interest & Safeguarding</span>
+                <span class="status-indicator">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <span>Active Advocacy & Advisory</span>
+                </span>
+              </div>
+
+              <h1 class="hero-name">
+                <span class="hero-name-first">Julian</span>
+                <span class="hero-name-last-row">
+                  <span>La Fortune</span>
+                  <span class="pronouns-inline">(he/him)</span>
+                </span>
+              </h1>
+
+              <p class="hero-role">Human Rights & Child Advocate</p>
+
+              <p class="hero-mission">
+                Advancing child protection, procedural fairness, and human dignity where vulnerable individuals
+                intersect with complex institutions. Work centers on documented advocacy, systemic oversight,
+                and clear public accountability.
+              </p>
+
+              <p class="hero-mission">
+                Every inquiry, review, and reform brief is approached with disciplined evidence gathering,
+                respect for lived experience, and a commitment to measurable institutional change rather than
+                performative statements.
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="#pillars" class="btn btn-primary">Explore Advocacy Pillars</a>
+                <a href="#methodology" class="btn">View Framework</a>
+                <a href="#contact" class="btn">Initiate Contact</a>
+              </div>
+
+              <div class="hero-metrics" aria-label="Key Focus Metrics">
+                <div class="metric-box">
+                  <span class="metric-num">06</span>
+                  <span class="metric-label">Core Advocacy Pillars</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-num">04</span>
+                  <span class="metric-label">Stage Review Protocol</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-num">100%</span>
+                  <span class="metric-label">Evidence & Dignity First</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="snapshot-card" aria-label="Advocacy Snapshot">
+              <div class="snapshot-header">
+                <span>Dossier Snapshot</span>
+                <span>REF // JLF-01</span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Primary Mandate</span>
+                <span class="snapshot-value">Human Rights, Child Safeguarding & Institutional Accountability</span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Core Method</span>
+                <span class="snapshot-value">Record-backed analysis, stakeholder alignment, and clear policy recommendations</span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Engagement Modes</span>
+                <span class="snapshot-value">Briefings, safeguarding reviews, public commentary, and collaborative coalitions</span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Direct Desk</span>
+                <span class="snapshot-value">
+                  <a href="mailto:advocacy@julianlafortune.org">advocacy@julianlafortune.org</a>
+                </span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Operating Standard</span>
+                <span class="snapshot-value">Confidential intake triage with transparent boundary setting</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission Section -->
+      <section id="mission" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">01 // Mission & Mandate</span>
+              <h2 class="section-title">Protecting Children & Upholding Rights</h2>
+            </div>
+          </div>
+
+          <p class="section-lead">
+            Institutional failures rarely happen in a single vacuum—they compound when oversight is opaque,
+            language obscures accountability, or children and families lack clear channels to be heard.
+            This work bridges frontline realities with rigorous documentation and practical reform.
+          </p>
+
+          <div class="mission-grid">
+            <article class="mission-panel">
+              <span class="mission-panel-tag">Principle 01 // Child-Centered Priority</span>
+              <h3 class="mission-panel-title">Best Interests Without Compromise</h3>
+              <p>
+                Children and youth require clear safeguards, trauma-informed communication, and structures
+                that prioritize safety, stability, and developmental wellbeing over bureaucratic convenience.
+              </p>
+            </article>
+
+            <article class="mission-panel">
+              <span class="mission-panel-tag">Principle 02 // Institutional Clarity</span>
+              <h3 class="mission-panel-title">Turning Friction Into Reform</h3>
+              <p>
+                Sustained change requires mapping exact decision points, identifying where rights protections
+                break down, and proposing concrete operational fixes that organizations can actually implement.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pillars Section -->
+      <section id="pillars" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">02 // Core Pillars</span>
+              <h2 class="section-title">Areas of Advocacy & Focus</h2>
+            </div>
+
+            <div class="filter-bar" role="group" aria-label="Filter advocacy pillars by focus area">
+              <button type="button" class="filter-btn active" data-filter="all">All (6)</button>
+              <button type="button" class="filter-btn" data-filter="child">Child Rights</button>
+              <button type="button" class="filter-btn" data-filter="justice">Rights & Justice</button>
+              <button type="button" class="filter-btn" data-filter="systems">Systems & Policy</button>
+            </div>
+          </div>
+
+          <div class="pillars-grid" id="pillarsGrid">
+            <article class="pillar-card" data-category="child" data-pillar="child-safeguarding" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 01</span>
+                  <span>Child Rights</span>
+                </div>
+                <h3 class="pillar-title">Child Safeguarding & Protection</h3>
+                <p class="pillar-summary">
+                  Strengthening protective boundaries, duty-of-care standards, and timely intervention pathways
+                  where children and young people face risk or neglect.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Safeguarding gap audits and risk matrices</li>
+                  <li>Clear reporting and escalation pathways</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+
+            <article class="pillar-card" data-category="justice" data-pillar="human-dignity" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 02</span>
+                  <span>Rights & Justice</span>
+                </div>
+                <h3 class="pillar-title">Human Dignity & Fair Process</h3>
+                <p class="pillar-summary">
+                  Defending procedural fairness, transparent decision-making, and equitable treatment across
+                  public and administrative systems.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Due-process and fairness assessments</li>
+                  <li>Accessible plain-language guidance</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+
+            <article class="pillar-card" data-category="systems" data-pillar="institutional-oversight" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 03</span>
+                  <span>Systems & Policy</span>
+                </div>
+                <h3 class="pillar-title">Institutional Accountability</h3>
+                <p class="pillar-summary">
+                  Examining how policies operate in practice, documenting systemic blind spots, and pressing
+                  for verifiable corrective action.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Chronological issue & record synthesis</li>
+                  <li>Accountability benchmarks and follow-ups</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+
+            <article class="pillar-card" data-category="child" data-pillar="youth-voice" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 04</span>
+                  <span>Child Rights</span>
+                </div>
+                <h3 class="pillar-title">Youth Voice & Participation</h3>
+                <p class="pillar-summary">
+                  Ensuring young people's perspectives are heard safely and meaningfully without tokenism or
+                  retaliation.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Ethical consultation protocols</li>
+                  <li>Age-appropriate feedback mechanisms</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+
+            <article class="pillar-card" data-category="systems" data-pillar="policy-reform" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 05</span>
+                  <span>Systems & Policy</span>
+                </div>
+                <h3 class="pillar-title">Policy & Standards Reform</h3>
+                <p class="pillar-summary">
+                  Translating real-world friction points into clear policy language, operational checklists, and
+                  enforceable governance standards.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Policy redlines and governance briefs</li>
+                  <li>Implementation readiness reviews</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+
+            <article class="pillar-card" data-category="justice" data-pillar="public-education" tabindex="0">
+              <div>
+                <div class="pillar-meta">
+                  <span>Pillar 06</span>
+                  <span>Rights & Justice</span>
+                </div>
+                <h3 class="pillar-title">Public Literacy & Advocacy</h3>
+                <p class="pillar-summary">
+                  Equipping communities, families, and allies with accurate information on rights, remedies,
+                  and constructive advocacy channels.
+                </p>
+                <ul class="pillar-deliverables">
+                  <li>Public explainers and resource briefs</li>
+                  <li>Coalition briefings and workshops</li>
+                </ul>
+              </div>
+              <div class="pillar-footer">
+                <span>Read Brief</span>
+                <span aria-hidden="true">-></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Methodology & Work Ledger -->
+      <section id="methodology" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">03 // Methodology & Ledger</span>
+              <h2 class="section-title">How Work Moves From Intake to Impact</h2>
+            </div>
+          </div>
+
+          <div class="methodology-grid">
+            <div class="step-card">
+              <span class="step-num">Stage 01 // Intake</span>
+              <h3 class="step-title">Scope & Boundary Check</h3>
+              <p class="step-desc">
+                Clarify objectives, urgency, confidentiality limits, and whether this site's advocacy scope
+                matches the request.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">Stage 02 // Audit</span>
+              <h3 class="step-title">Evidence & Timeline Mapping</h3>
+              <p class="step-desc">
+                Organize facts, policies, dates, and institutional touchpoints into a coherent, verifiable
+                record.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">Stage 03 // Strategy</span>
+              <h3 class="step-title">Targeted Recommendations</h3>
+              <p class="step-desc">
+                Identify concrete safeguards, policy adjustments, or escalation paths grounded in rights and
+                feasibility.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">Stage 04 // Follow-Through</span>
+              <h3 class="step-title">Review & Accountability</h3>
+              <p class="step-desc">
+                Track commitments, revisit outcomes, and refine documentation so gains hold over time.
+              </p>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="ledger-table">
+              <thead>
+                <tr>
+                  <th scope="col">Workstream</th>
+                  <th scope="col">Primary Focus</th>
+                  <th scope="col">Core Deliverable</th>
+                  <th scope="col">Standard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Child Safeguarding Reviews</strong></td>
+                  <td>Protective protocols & youth safety</td>
+                  <td>Structured risk & policy gap briefs</td>
+                  <td>Child-first, non-punitive clarity</td>
+                </tr>
+                <tr>
+                  <td><strong>Institutional Oversight</strong></td>
+                  <td>Administrative fairness & compliance</td>
+                  <td>Chronologies & accountability notes</td>
+                  <td>Factual precision & restraint</td>
+                </tr>
+                <tr>
+                  <td><strong>Coalition & Policy Briefs</strong></td>
+                  <td>Systemic reform & public dialogue</td>
+                  <td>Actionable briefs & talking points</td>
+                  <td>Accessible, rigorous, practical</td>
+                </tr>
+                <tr>
+                  <td><strong>Community & Family Guidance</strong></td>
+                  <td>Navigating processes & rights literacy</td>
+                  <td>Plain-language checklists & referrals</td>
+                  <td>Empathetic, clear boundaries</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Legal & Recognition Section -->
+      <section id="recognition" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">04 // Legal & Recognition</span>
+              <h2 class="section-title">Judicial & Public Record</h2>
+            </div>
+          </div>
+
+          <div class="recognition-layout">
+            <article class="plaque">
+              <div class="plaque-source">Public Record Highlight // Judicial Recognition</div>
+              <blockquote class="plaque-quote">
+                "Advocacy grounded in principle, persistence, and care for human dignity leaves a lasting
+                mark on the institutions and communities it challenges to do better."
+              </blockquote>
+              <div class="plaque-attribution">
+                <span class="plaque-judge">Recorded Recognition — Advocacy & Public Interest</span>
+                <span class="plaque-detail">Highlighted for principled engagement & commitment to child and human rights</span>
+              </div>
+            </article>
+
+            <div class="affiliations-panel" id="affiliations">
+              <div class="affiliation-card">
+                <span class="affiliation-tag">Mandate // Child Welfare</span>
+                <h3 class="affiliation-name">Child Rights & Safeguarding Standards</h3>
+                <p class="affiliation-desc">
+                  Focused on ensuring protective systems operate transparently, responsively, and with the
+                  wellbeing of children at the center.
+                </p>
+              </div>
+
+              <div class="affiliation-card">
+                <span class="affiliation-tag">Mandate // Civil & Human Rights</span>
+                <h3 class="affiliation-name">Dignity, Equity & Accountability</h3>
+                <p class="affiliation-desc">
+                  Advocating for clear remedies, fair treatment, and institutional responsibility when rights
+                  are tested or overlooked.
+                </p>
+              </div>
+
+              <div class="affiliation-card">
+                <span class="affiliation-tag">Mandate // Collaborative Action</span>
+                <h3 class="affiliation-name">Coalitions, Advocates & Allies</h3>
+                <p class="affiliation-desc">
+                  Working alongside principled partners, community voices, and reformers committed to durable
+                  structural improvement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Protocols / FAQ -->
+      <section id="faq" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">05 // Protocols & Boundaries</span>
+              <h2 class="section-title">Important Notes Before Reaching Out</h2>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Is this website a substitute for legal representation or emergency services?</summary>
+              <div class="faq-answer">
+                No. Advocacy and policy work here are informational and strategic in nature—not formal legal
+                representation. If a child or person is in immediate physical danger or crisis, contact local
+                emergency services or designated child protection / crisis hotlines immediately.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>What kinds of inquiries are most helpful to share?</summary>
+              <div class="faq-answer">
+                Clear summaries of systemic issues, child safeguarding concerns, policy or institutional
+                oversight questions, coalition or speaking invitations, and collaboration proposals. Keep
+                initial messages concise and factual without sending sensitive personal ID numbers.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>How are messages handled and prioritized?</summary>
+              <div class="faq-answer">
+                Messages are reviewed carefully against current bandwidth, safeguarding relevance, and
+                alignment with core advocacy pillars. Not every inquiry requires a lengthy back-and-forth,
+                and clear boundaries are shared whenever a matter falls outside this scope.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-index">06 // Contact & Dispatch</span>
+              <h2 class="section-title">Direct Channels</h2>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-box">
+              <div>
+                <span class="contact-label">Electronic Mail</span>
+                <div class="contact-value">advocacy@julianlafortune.org</div>
+                <p class="contact-note">
+                  Best for structured briefs, advocacy inquiries, coalition notes, and formal correspondence.
+                </p>
+              </div>
+              <div class="contact-actions">
+                <button type="button" class="btn btn-primary" id="copyEmailMainBtn">Copy Address</button>
+                <a href="mailto:advocacy@julianlafortune.org" class="btn">Open Mail Client</a>
+              </div>
+            </div>
+
+            <div class="contact-box">
+              <div>
+                <span class="contact-label">Advocacy & Public Work</span>
+                <div class="contact-value">Julian La Fortune</div>
+                <p class="contact-note">
+                  Human Rights & Child Advocate — dedicated to protection, accountability, and principled reform.
+                </p>
+              </div>
+              <div class="contact-actions">
+                <a href="#pillars" class="btn">Review Pillars</a>
+                <a href="#top" class="btn">Back to Top</a>
+              </div>
+            </div>
+          </div>
+
+          <form class="dispatch-form" id="dispatchForm" novalidate>
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+              <div>
+                <span class="section-index">Structured Inquiry Draft</span>
+                <h3 class="mission-panel-title">Prepare a Dispatch</h3>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="senderName">Your Name or Organization</label>
+                <input type="text" id="senderName" name="senderName" placeholder="e.g., Jordan Vance / Community Coalition" required />
+              </div>
+
+              <div class="field">
+                <label for="senderEmail">Your Reply Email</label>
+                <input type="email" id="senderEmail" name="senderEmail" placeholder="name@example.org" required />
+              </div>
+
+              <div class="field full">
+                <label for="topicSelect">Primary Focus</label>
+                <select id="topicSelect" name="topicSelect">
+                  <option value="Child Safeguarding & Protection">Child Safeguarding & Protection</option>
+                  <option value="Human Dignity & Fair Process">Human Dignity & Fair Process</option>
+                  <option value="Institutional Accountability">Institutional Accountability</option>
+                  <option value="Policy & Standards Reform">Policy & Standards Reform</option>
+                  <option value="Coalition / Speaking / General">Coalition / Speaking / General</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="messageBody">Summary & Context</label>
+                <textarea id="messageBody" name="messageBody" placeholder="Share a concise, factual overview of the issue, timeline, or collaboration request..." required></textarea>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <div class="contact-actions">
+                <button type="submit" class="btn btn-primary">Launch Mail Draft</button>
+                <button type="button" class="btn" id="copyDraftBtn">Copy Formatted Draft</button>
+              </div>
+              <span class="form-status" id="formStatus" role="status" aria-live="polite">
+                Runs locally in your browser—no data is stored on this page.
+              </span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <span>Julian La Fortune // Human Rights & Child Advocate</span>
+          <ul class="footer-links">
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#pillars">Pillars</a></li>
+            <li><a href="#methodology">Framework</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <span>© <span id="yearSpan">2026</span> All Rights Reserved</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Pillar Detail Modal -->
+  <div class="modal-backdrop" id="pillarModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <span id="modalMeta">PILLAR BRIEF</span>
+        <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close modal">Close [ESC]</button>
+      </div>
+      <h3 class="modal-title" id="modalTitle">Pillar Title</h3>
+      <p class="modal-body" id="modalBody"></p>
+      <ul class="modal-points" id="modalPoints"></ul>
+      <div class="contact-actions">
+        <a href="#contact" class="btn btn-primary btn-sm" id="modalContactBtn">Discuss This Focus</a>
+        <button type="button" class="btn btn-sm" id="modalDoneBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied to clipboard</div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      document.documentElement.classList.add("js-ready");
+
+      const CONTACT_EMAIL = "advocacy@julianlafortune.org";
+
+      const PILLAR_DATA = {
+        "child-safeguarding": {
+          meta: "PILLAR 01 // CHILD RIGHTS",
+          title: "Child Safeguarding & Protection",
+          body: "Protective systems work only when obligations are explicit, response times are clear, and vulnerable young people are never left navigating opaque bureaucracy alone.",
+          points: [
+            "Evaluate safeguarding policies for ambiguity, delays, and accountability gaps.",
+            "Clarify reporting pathways and protective escalation triggers.",
+            "Promote trauma-aware communication and child-centered decision criteria."
+          ]
+        },
+        "human-dignity": {
+          meta: "PILLAR 02 // RIGHTS & JUSTICE",
+          title: "Human Dignity & Fair Process",
+          body: "Fair process requires more than formal rules on paper—it demands clear notice, meaningful opportunity to be heard, and respectful treatment across every interaction.",
+          points: [
+            "Audit administrative and institutional processes for fairness and clarity.",
+            "Identify where complex procedures quietly exclude or disadvantage people.",
+            "Advocate for transparent standards and reasoned explanations."
+          ]
+        },
+        "institutional-oversight": {
+          meta: "PILLAR 03 // SYSTEMS & POLICY",
+          title: "Institutional Accountability",
+          body: "When institutions review themselves without external rigor or public clarity, recurring issues persist. Structured documentation turns scattered observations into undeniable patterns.",
+          points: [
+            "Build clear timelines and factual issue summaries grounded in records.",
+            "Track whether stated commitments match day-to-day execution.",
+            "Press for concrete corrective measures rather than vague assurances."
+          ]
+        },
+        "youth-voice": {
+          meta: "PILLAR 04 // CHILD RIGHTS",
+          title: "Youth Voice & Participation",
+          body: "Young people affected by decisions deserve age-appropriate information and safe avenues to express views—without pressure, exposure, or performative framing.",
+          points: [
+            "Establish ethical safeguards before seeking youth input or stories.",
+            "Ensure feedback channels are accessible, respectful, and non-retaliatory.",
+            "Close the loop so young participants see how their input was weighed."
+          ]
+        },
+        "policy-reform": {
+          meta: "PILLAR 05 // SYSTEMS & POLICY",
+          title: "Policy & Standards Reform",
+          body: "Good intent fails when policies are vague or disconnected from daily operations. Practical reform translates human rights principles into clear rules and checklists.",
+          points: [
+            "Draft concrete policy revisions, governance norms, and review standards.",
+            "Align operational workflows with statutory and ethical duties.",
+            "Establish measurable review cycles so standards stay current."
+          ]
+        },
+        "public-education": {
+          meta: "PILLAR 06 // RIGHTS & JUSTICE",
+          title: "Public Literacy & Advocacy",
+          body: "Clear, accurate public information empowers families, advocates, and communities to understand their rights, ask sharper questions, and act together effectively.",
+          points: [
+            "Break down complex policies and rights frameworks into plain language.",
+            "Equip partners and coalitions with reliable, well-structured briefs.",
+            "Encourage calm, disciplined, evidence-backed public advocacy."
+          ]
+        }
+      };
+
+      // Dynamic copyright year
+      const yearSpan = document.getElementById("yearSpan");
+      if (yearSpan) {
+        yearSpan.textContent = String(Math.max(2026, new Date().getFullYear()));
+      }
+
+      // Toast helper
+      const toastEl = document.getElementById("toast");
+      let toastTimer = null;
+      function showToast(message) {
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(function () {
+          toastEl.classList.remove("show");
+        }, 2400);
+      }
+
+      // Clipboard helper with fallback
+      function copyText(text, successMsg) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+          navigator.clipboard.writeText(text).then(
+            function () {
+              showToast(successMsg);
+            },
+            function () {
+              fallbackCopy(text, successMsg);
+            }
+          );
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showToast(successMsg);
+        } catch (_err) {
+          showToast("Copy unavailable — use " + text);
+        }
+        document.body.removeChild(ta);
+      }
+
+      // Email copy buttons
+      ["copyEmailTopBtn", "copyEmailDrawerBtn", "copyEmailMainBtn"].forEach(function (id) {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.addEventListener("click", function () {
+            copyText(CONTACT_EMAIL, "Email copied: " + CONTACT_EMAIL);
+          });
+        }
+      });
+
+      // Mobile menu drawer
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+
+      function setDrawerState(open) {
+        if (!mobileMenuBtn || !mobileDrawer) return;
+        mobileDrawer.classList.toggle("open", open);
+        mobileMenuBtn.setAttribute("aria-expanded", String(open));
+        mobileMenuBtn.textContent = open ? "Close" : "Menu";
+      }
+
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener("click", function () {
+          const isOpen = mobileDrawer.classList.contains("open");
+          setDrawerState(!isOpen);
+        });
+
+        document.querySelectorAll(".drawer-link").forEach(function (link) {
+          link.addEventListener("click", function () {
+            setDrawerState(false);
+          });
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 980) {
+            setDrawerState(false);
+          }
+        });
+      }
+
+      // Pillar filter buttons
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const pillarCards = document.querySelectorAll(".pillar-card");
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const filter = btn.getAttribute("data-filter") || "all";
+
+          filterBtns.forEach(function (b) {
+            b.classList.toggle("active", b === btn);
+          });
+
+          pillarCards.forEach(function (card) {
+            const cat = card.getAttribute("data-category");
+            const matches = filter === "all" || cat === filter;
+            card.classList.toggle("is-hidden", !matches);
+          });
+        });
+      });
+
+      // Subtle pointer glow on pillar cards
+      pillarCards.forEach(function (card) {
+        card.addEventListener("pointermove", function (e) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty("--mouse-x", x + "px");
+          card.style.setProperty("--mouse-y", y + "px");
+        });
+      });
+
+      // Pillar Modal logic
+      const modalBackdrop = document.getElementById("pillarModal");
+      const modalMeta = document.getElementById("modalMeta");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBody = document.getElementById("modalBody");
+      const modalPoints = document.getElementById("modalPoints");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const modalDoneBtn = document.getElementById("modalDoneBtn");
+      const modalContactBtn = document.getElementById("modalContactBtn");
+      let lastFocusedElement = null;
+
+      function openPillarModal(key) {
+        const item = PILLAR_DATA[key];
+        if (!item || !modalBackdrop) return;
+
+        lastFocusedElement = document.activeElement;
+        modalMeta.textContent = item.meta;
+        modalTitle.textContent = item.title;
+        modalBody.textContent = item.body;
+        modalPoints.innerHTML = "";
+
+        item.points.forEach(function (pt) {
+          const li = document.createElement("li");
+          li.textContent = pt;
+          modalPoints.appendChild(li);
+        });
+
+        modalBackdrop.classList.add("open");
+        if (closeModalBtn) closeModalBtn.focus();
+      }
+
+      function closePillarModal() {
+        if (!modalBackdrop) return;
+        modalBackdrop.classList.remove("open");
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+          lastFocusedElement.focus();
+          lastFocusedElement = null;
+        }
+      }
+
+      pillarCards.forEach(function (card) {
+        const key = card.getAttribute("data-pillar");
+        card.addEventListener("click", function () {
+          openPillarModal(key);
+        });
+        card.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openPillarModal(key);
+          }
+        });
+      });
+
+      if (closeModalBtn) closeModalBtn.addEventListener("click", closePillarModal);
+      if (modalDoneBtn) modalDoneBtn.addEventListener("click", closePillarModal);
+      if (modalContactBtn) {
+        modalContactBtn.addEventListener("click", function () {
+          closePillarModal();
+        });
+      }
+
+      if (modalBackdrop) {
+        modalBackdrop.addEventListener("click", function (e) {
+          if (e.target === modalBackdrop) {
+            closePillarModal();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modalBackdrop && modalBackdrop.classList.contains("open")) {
+          closePillarModal();
+        }
+      });
+
+      // Scroll reveal with safe fallback so nothing ever stays stuck hidden
+      const revealEls = document.querySelectorAll(".reveal");
+      function revealAll() {
+        revealEls.forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+      }
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
+        );
+
+        revealEls.forEach(function (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.95) {
+            el.classList.add("is-visible");
+          } else {
+            observer.observe(el);
+          }
+        });
+
+        // Safety net in case user jumps straight to an anchor
+        window.addEventListener("scroll", function () {
+          revealEls.forEach(function (el) {
+            if (!el.classList.contains("is-visible")) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight) {
+                el.classList.add("is-visible");
+              }
+            }
+          });
+        }, { passive: true });
+      } else {
+        revealAll();
+      }
+
+      // Inquiry / Dispatch helper
+      const dispatchForm = document.getElementById("dispatchForm");
+      const formStatus = document.getElementById("formStatus");
+      const copyDraftBtn = document.getElementById("copyDraftBtn");
+
+      function buildDraftText() {
+        const nameVal = (document.getElementById("senderName").value || "").trim();
+        const emailVal = (document.getElementById("senderEmail").value || "").trim();
+        const topicVal = (document.getElementById("topicSelect").value || "").trim();
+        const bodyVal = (document.getElementById("messageBody").value || "").trim();
+
+        return [
+          "To: " + CONTACT_EMAIL,
+          "From: " + (nameVal || "[Name / Organization]") + (emailVal ? " <" + emailVal + ">" : ""),
+          "Focus: " + topicVal,
+          "",
+          bodyVal || "[Summary & Context]"
+        ].join("\n");
+      }
+
+      function validateForm() {
+        const nameVal = (document.getElementById("senderName").value || "").trim();
+        const emailVal = (document.getElementById("senderEmail").value || "").trim();
+        const bodyVal = (document.getElementById("messageBody").value || "").trim();
+
+        if (!nameVal) {
+          formStatus.textContent = "Please enter your name or organization.";
+          return false;
+        }
+        if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+          formStatus.textContent = "Please enter a valid reply email address.";
+          return false;
+        }
+        if (!bodyVal) {
+          formStatus.textContent = "Please enter a brief summary before preparing your draft.";
+          return false;
+        }
+        return true;
+      }
+
+      if (dispatchForm) {
+        dispatchForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (!validateForm()) return;
+
+          const nameVal = document.getElementById("senderName").value.trim();
+          const emailVal = document.getElementById("senderEmail").value.trim();
+          const topicVal = document.getElementById("topicSelect").value.trim();
+          const bodyVal = document.getElementById("messageBody").value.trim();
+
+          const subject = encodeURIComponent("Advocacy Inquiry // " + topicVal);
+          const mailBody = encodeURIComponent(
+            "From: " + nameVal + " (" + emailVal + ")\nFocus: " + topicVal + "\n\n" + bodyVal
+          );
+
+          formStatus.textContent = "Opening your default mail client with pre-filled details...";
+          window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + mailBody;
+        });
+      }
+
+      if (copyDraftBtn) {
+        copyDraftBtn.addEventListener("click", function () {
+          const text = buildDraftText();
+          copyText(text, "Formatted inquiry draft copied");
+          formStatus.textContent = "Draft copied to clipboard.";
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
