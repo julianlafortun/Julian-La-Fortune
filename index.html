@@ -1,1 +1,458 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JULIAN LA FORTUNE — Human Rights & Child Advocate</title>
+  <meta name="description" content="Official portfolio and advocacy profile of Julian La Fortune (He/Him), Human Rights & Child Advocate with Defence for Children International Canada and Better Care Network." />
 
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Editorial & Technical Fonts: Space Grotesk, Inter, Instrument Serif, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050505',
+            charcoal: '#0a0a0a',
+            surface: '#0f0f0f',
+            ash: '#999999',
+            silver: '#c4c4c4',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --fg: #ffffff;
+      --border: rgba(255, 255, 255, 0.12);
+      --border-strong: rgba(255, 255, 255, 0.28);
+      --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: #ffffff;
+      color: #050505;
+    }
+
+    /* Architectural Hairline Grid Background */
+    .bg-grid-pattern {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+
+    /* Subtle Film Grain Overlay */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: #ffffff;
+      z-index: 60;
+      transition: width 0.08s linear;
+    }
+
+    /* Hero Masked Line Reveal */
+    .line-mask {
+      overflow: hidden;
+      display: block;
+    }
+
+    .line-reveal {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: lineReveal 1.05s var(--ease-editorial) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.48s; }
+    .delay-5 { animation-delay: 0.62s; }
+
+    @keyframes lineReveal {
+      0% {
+        transform: translateY(110%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    /* Scroll-triggered Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Spotlight Hover Card Effect */
+    .spotlight-card {
+      position: relative;
+      background: #0a0a0a;
+      border: 1px solid var(--border);
+      transition: border-color 0.35s ease, transform 0.35s var(--ease-editorial);
+      overflow: hidden;
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.09),
+        transparent 45%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .spotlight-card:hover {
+      border-color: rgba(255, 255, 255, 0.38);
+      transform: translateY(-2px);
+    }
+
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Kinetic Marquee */
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 32s linear infinite;
+    }
+
+    .marquee-wrapper:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Editorial Button Hover Sweep */
+    .btn-editorial {
+      position: relative;
+      overflow: hidden;
+      transition: color 0.35s var(--ease-editorial), border-color 0.35s ease, transform 0.25s ease;
+    }
+
+    .btn-editorial:active {
+      transform: scale(0.98);
+    }
+
+    /* Pulse status indicator */
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .status-dot {
+      animation: subtlePulse 2.4s ease-in-out infinite;
+    }
+
+    /* Modal Backdrop Transition */
+    #pillar-modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #pillar-modal-panel {
+      transition: transform 0.4s var(--ease-editorial), opacity 0.35s ease;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-white bg-grid-pattern selection:bg-white selection:text-obsidian">
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Subtle Monochrome Grain Texture -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navigation -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-obsidian/80 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="w-2.5 h-2.5 bg-white inline-block transition-transform duration-300 group-hover:rotate-45"></span>
+        <span class="font-display font-bold tracking-tight text-sm sm:text-base uppercase">
+          J. La Fortune
+        </span>
+      </a>
+
+      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-ash">
+        <a href="#mission" class="hover:text-white transition-colors">01 / Mission</a>
+        <a href="#expertise" class="hover:text-white transition-colors">02 / Expertise</a>
+        <a href="#affiliations" class="hover:text-white transition-colors">03 / Recognition</a>
+        <a href="#contact" class="hover:text-white transition-colors">04 / Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="btn-editorial font-mono text-xs uppercase tracking-wider px-4 py-2 border border-white/25 rounded-full hover:bg-white hover:text-obsidian">
+          Connect
+        </a>
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 border border-white/15 rounded-lg text-white hover:border-white/40 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-obsidian/95 backdrop-blur-xl px-5 py-5 space-y-4 font-mono text-xs uppercase tracking-widest">
+      <a href="#mission" class="mobile-nav-link block py-1 text-silver hover:text-white">01 / Mission & Lived Experience</a>
+      <a href="#expertise" class="mobile-nav-link block py-1 text-silver hover:text-white">02 / Core Focus Areas</a>
+      <a href="#affiliations" class="mobile-nav-link block py-1 text-silver hover:text-white">03 / Affiliations & Recognition</a>
+      <a href="#contact" class="mobile-nav-link block py-1 text-silver hover:text-white">04 / Direct Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <!-- Top Metadata Strip -->
+        <div class="line-mask mb-8">
+          <div class="line-reveal delay-1 flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10 font-mono text-[11px] sm:text-xs uppercase tracking-[0.18em] text-ash">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-white status-dot"></span>
+              <span>Ontario, Canada &mdash; Active Advocacy</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <span>DCI Canada</span>
+              <span class="text-white/30">/</span>
+              <span>Better Care Network</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Name & Pronouns -->
+        <div class="mb-6">
+          <h1 class="font-display font-bold uppercase tracking-[-0.04em] leading-[0.92] text-[clamp(2.85rem,8.5vw,6.75rem)]">
+            <span class="line-mask">
+              <span class="line-reveal delay-2">JULIAN</span>
+            </span>
+            <span class="line-mask">
+              <span class="line-reveal delay-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                <span>LA FORTUNE</span>
+                <span class="font-serif italic font-normal tracking-normal text-2xl sm:text-4xl lg:text-5xl text-silver lowercase">
+                  (He/Him)
+                </span>
+              </span>
+            </span>
+          </h1>
+        </div>
+
+        <!-- Role & Subtitle Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mt-10 sm:mt-14">
+          <div class="lg:col-span-7">
+            <div class="line-mask">
+              <p class="line-reveal delay-4 font-display text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-white">
+                Human Rights &amp; Child Advocate
+              </p>
+            </div>
+            <div class="line-mask mt-3">
+              <p class="line-reveal delay-4 text-sm sm:text-base text-ash max-w-2xl leading-relaxed">
+                Youth Advocate with <strong class="text-white font-medium">Defence for Children International (DCI) Canada</strong> and member of <strong class="text-white font-medium">Better Care Network</strong> (Transforming Children’s Care) &mdash; working toward structural reform in Ontario’s youth protection and crisis care frameworks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Primary CTAs -->
+          <div class="lg:col-span-5 flex flex-wrap sm:flex-nowrap lg:justify-end gap-3.5">
+            <a href="#contact" class="btn-editorial w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white text-obsidian font-mono text-xs uppercase tracking-widest font-medium px-7 py-4 rounded-full hover:bg-silver">
+              <span>Get in Touch</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9" />
+              </svg>
+            </a>
+            <a href="#mission" class="btn-editorial w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border border-white/25 text-white font-mono text-xs uppercase tracking-widest px-7 py-4 rounded-full hover:border-white hover:bg-white/5">
+              <span>Read Mission</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KINETIC MARQUEE / TICKER BANNER -->
+    <div class="marquee-wrapper border-b border-white/10 bg-charcoal py-4 overflow-hidden select-none" aria-label="Core Advocacy Pillars">
+      <div class="marquee-track font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-silver">
+        <div class="flex items-center gap-8 pr-8">
+          <span>Youth Rights</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Child Protection</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Legislative Reform</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Violence Against Children</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Children's Mental Health</span>
+          <span class="text-white/35">&bull;</span>
+        </div>
+        <div class="flex items-center gap-8 pr-8" aria-hidden="true">
+          <span>Youth Rights</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Child Protection</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Legislative Reform</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Violence Against Children</span>
+          <span class="text-white/35">&bull;</span>
+          <span>Children's Mental Health</span>
+          <span class="text-white/35">&bull;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01 / MISSION & LIVED-EXPERIENCE STATEMENT -->
+    <section id="mission" class="py-20 sm:py-28 lg:py-32 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          <!-- Section Index -->
+          <div class="lg:col-span-4 reveal">
+            <div class="lg:sticky lg:top-24">
+              <span class="font-mono text-xs uppercase tracking-[0.2em] text-ash block mb-3">
+                01 / Mission &amp; Mandate
+              </span>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">
+                Closing the Structural Gaps in Youth Protection.
+              </h2>
+              <p class="mt-4 text-sm text-ash leading-relaxed">
+                Advocacy anchored in lived accountability, human rights law, and systemic reform across Ontario and Canada.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editorial Statement Block -->
+          <div class="lg:col-span-8 reveal">
+            <div class="spotlight-card rounded-2xl p-7 sm:p-10 lg:p-12">
+              <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-8 font-mono text-[11px] uppercase tracking-widest text-ash">
+                <span>Statement of Purpose</span>
+                <span>DCI Canada &mdash; Youth Advocate</span>
+              </div>
+
+              <blockquote class="font-serif italic text-2xl sm:text-3xl lg:text-[2.15rem] leading-[1.32] text-white mb-8">
+                &ldquo;My mission is to ensure that no child fleeing an unsafe home situation falls through the structural gaps of our youth protection and crisis care frameworks.&rdquo;
+              </blockquote>
+
+              <div class="space-y-5 text-sm sm:text-base text-silver leading-relaxed font-normal">
+                <p>
+                  As a Youth Advocate for <strong class="text-white font-medium">Defence for Children International (DCI) Canada</strong>, Julian La Fortune’s work is driven by direct lived experience navigating child welfare and crisis care systems as a survivor of psychological and emotional abuse.
+                </p>
+                <p>
+                  Dedicated to reforming <strong class="text-white font-medium">Ontario’s youth protection frameworks</strong>, his advocacy bridges front-line youth reality with institutional policy &mdash; pushing for stronger safeguards against violence toward children, accessible youth mental health interventions, and enforceable rights under international and domestic child protection standards.
+                </p>
+              </div>
+
+              <!-- Key Metrics / Pillars Strip -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-white/10">
+                <div>
+                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Jurisdiction</span>
+                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Ontario &amp; Federal</span>
+                </div>
+                <div>
+                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Core Lens</span>
+                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Lived-Experience Policy</span>
+                </div>
+                <div>
+                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Trajectory</span>
+                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Child Rights &amp; Law</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / CORE FOCUS AREAS & EXPERTISE (INTERACTIVE BENTO GRID) -->
+    <section id="expertise" class="py-20 sm:py-28 lg:py-32 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <!-- Header & Filter Tabs -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-[0.2em] text-ash block mb-3">
+              02 / Expertise &amp; Interests
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+              Core Advocacy Pillars
+            </h2>
+          </div>
+
+          <!-- Interactive Category Filter -->
+          <div role="tablist" aria-label="Filter Expertise Areas" class="inline-flex flex-wrap gap-2 bg-charcoal p-1.5 rounded-full border border-white/10">
+            <button data-filter="all" class="filter-btn active font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full bg-white text-obsidian transition-all">
+              All (05)
+            </button>
+            <button data-filter="policy" class="filter-btn font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full text-ash hover:text-white transition-all">
+              Policy &amp; Law
+            </button>
+            <button data-filter="wellbeing" class="filter-btn font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full text-ash hover:text-white transition-all">
+              Protection &amp; Care
+            </button>
+          </div>
+        </div>
+
+        <!-- Bento Grid (5 Cards) -->
+        <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-6 gap-5">
+          <!-- Card 1 (Span 3) -->
+          <article data-category="policy" data-pillar="0" class="pillar-card spotlight-card rounded-2xl p-7 sm:p-8 md:col-span-3 flex flex-col justify-between cursor-pointer group reveal">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-mono text-xs text-ash tracking-widest">PILLAR / 01</span>
+                <span class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white group-hover:text-obsidian transition-colors">
+                  <svg class="w-3.5 h-3.5" fill=
