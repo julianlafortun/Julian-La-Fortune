@@ -1,19 +1,24 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JULIAN LA FORTUNE — Human Rights & Child Advocate</title>
-  <meta name="description" content="Official portfolio and advocacy profile of Julian La Fortune (He/Him), Human Rights & Child Advocate with Defence for Children International Canada and Better Care Network." />
+  <title>JULIAN LA FORTUNE // ADVOCACY — Human Rights &amp; Child Advocate</title>
+  <meta
+    name="description"
+    content="Editorial portfolio and advocacy profile of Julian La Fortune (He/Him), Human Rights &amp; Child Advocate / Youth Advocate working with Defence for Children International (DCI) Canada and Better Care Network in Ontario, Canada."
+  />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Editorial & Technical Fonts: Space Grotesk, Inter, Instrument Serif, JetBrains Mono -->
+  <!-- Google Fonts: Space Grotesk, Instrument Serif, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <script>
     tailwind.config = {
@@ -21,14 +26,13 @@
         extend: {
           colors: {
             obsidian: '#050505',
-            charcoal: '#0a0a0a',
-            surface: '#0f0f0f',
-            ash: '#999999',
-            silver: '#c4c4c4',
+            charcoal: '#0c0c0c',
+            card: '#111111',
+            silver: '#b4b4bc',
+            ash: '#82828d',
           },
           fontFamily: {
             display: ['"Space Grotesk"', 'sans-serif'],
-            sans: ['"Inter"', 'sans-serif'],
             serif: ['"Instrument Serif"', 'serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
@@ -39,24 +43,46 @@
 
   <style>
     :root {
-      --bg: #050505;
-      --fg: #ffffff;
-      --border: rgba(255, 255, 255, 0.12);
-      --border-strong: rgba(255, 255, 255, 0.28);
-      --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+      --bg-ground: #050505;
+      --bg-charcoal: #0c0c0c;
+      --bg-card: #111111;
+      --ink-primary: #ffffff;
+      --ink-silver: #b4b4bc;
+      --ink-ash: #82828d;
+      --hairline: rgba(255, 255, 255, 0.14);
+      --hairline-strong: rgba(255, 255, 255, 0.32);
+      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      background-color: var(--bg);
-      color: var(--fg);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Strict top flush and full visibility guarantee */
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      background-color: var(--bg-ground);
+      color: var(--ink-primary);
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /* Ensure no element ever stalls at opacity: 0 */
+    section,
+    article,
+    header,
+    footer,
+    aside,
+    .editorial-card,
+    .pillar-card,
+    .bento-card {
+      opacity: 1 !important;
     }
 
     ::selection {
@@ -64,85 +90,25 @@
       color: #050505;
     }
 
-    /* Architectural Hairline Grid Background */
-    .bg-grid-pattern {
+    /* Architectural monochrome grid */
+    .architectural-grid {
+      background-color: var(--bg-ground);
       background-size: 64px 64px;
       background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
     }
 
-    /* Subtle Film Grain Overlay */
-    .noise-overlay {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 40;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Scroll Progress Bar */
-    #scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: #ffffff;
-      z-index: 60;
-      transition: width 0.08s linear;
-    }
-
-    /* Hero Masked Line Reveal */
-    .line-mask {
-      overflow: hidden;
-      display: block;
-    }
-
-    .line-reveal {
-      display: block;
-      transform: translateY(110%);
-      opacity: 0;
-      animation: lineReveal 1.05s var(--ease-editorial) forwards;
-    }
-
-    .delay-1 { animation-delay: 0.08s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.34s; }
-    .delay-4 { animation-delay: 0.48s; }
-    .delay-5 { animation-delay: 0.62s; }
-
-    @keyframes lineReveal {
-      0% {
-        transform: translateY(110%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0%);
-        opacity: 1;
-      }
-    }
-
-    /* Scroll-triggered Reveal */
-    .reveal {
-      opacity: 1;
-      transform: translateY(28px);
-      transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Spotlight Hover Card Effect */
+    /* Cursor-tracking radial spotlight glow */
     .spotlight-card {
       position: relative;
-      background: #0a0a0a;
-      border: 1px solid var(--border);
-      transition: border-color 0.35s ease, transform 0.35s var(--ease-editorial);
+      background-color: var(--bg-card);
+      border: 1px solid var(--hairline);
       overflow: hidden;
+      transition:
+        border-color 0.28s var(--ease-editorial),
+        background-color 0.28s var(--ease-editorial),
+        transform 0.28s var(--ease-editorial);
     }
 
     .spotlight-card::before {
@@ -150,17 +116,18 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(
-        520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.09),
-        transparent 45%
+        500px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+        rgba(255, 255, 255, 0.1),
+        transparent 58%
       );
       opacity: 0;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.28s ease;
       pointer-events: none;
     }
 
     .spotlight-card:hover {
-      border-color: rgba(255, 255, 255, 0.38);
+      border-color: var(--hairline-strong);
+      background-color: #161616;
       transform: translateY(-2px);
     }
 
@@ -168,11 +135,16 @@
       opacity: 1;
     }
 
-    /* Kinetic Marquee */
+    /* Smooth horizontal marquee ticker */
+    .marquee-wrapper {
+      overflow: hidden;
+      width: 100%;
+    }
+
     .marquee-track {
       display: flex;
       width: max-content;
-      animation: marqueeScroll 32s linear infinite;
+      animation: marqueeScroll 30s linear infinite;
     }
 
     .marquee-wrapper:hover .marquee-track {
@@ -180,279 +152,988 @@
     }
 
     @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
-    /* Editorial Button Hover Sweep */
-    .btn-editorial {
-      position: relative;
-      overflow: hidden;
-      transition: color 0.35s var(--ease-editorial), border-color 0.35s ease, transform 0.25s ease;
+    @keyframes statusPulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.35;
+      }
     }
 
-    .btn-editorial:active {
-      transform: scale(0.98);
+    .status-pulse {
+      animation: statusPulse 2.2s ease-in-out infinite;
     }
 
-    /* Pulse status indicator */
-    @keyframes subtlePulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+    .modal-overlay {
+      display: none;
     }
 
-    .status-dot {
-      animation: subtlePulse 2.4s ease-in-out infinite;
-    }
-
-    /* Modal Backdrop Transition */
-    #pillar-modal {
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-    #pillar-modal-panel {
-      transition: transform 0.4s var(--ease-editorial), opacity 0.35s ease;
+    .modal-overlay.is-open {
+      display: flex;
     }
   </style>
 </head>
-<body class="bg-obsidian text-white bg-grid-pattern selection:bg-white selection:text-obsidian">
+<body class="architectural-grid text-white min-h-screen flex flex-col">
 
-  <!-- Scroll Progress Indicator -->
-  <div id="scroll-progress" aria-hidden="true"></div>
-
-  <!-- Subtle Monochrome Grain Texture -->
-  <div class="noise-overlay" aria-hidden="true"></div>
-
-  <!-- Sticky Glassmorphic Navigation -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-obsidian/80 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3 group">
-        <span class="w-2.5 h-2.5 bg-white inline-block transition-transform duration-300 group-hover:rotate-45"></span>
-        <span class="font-display font-bold tracking-tight text-sm sm:text-base uppercase">
-          J. La Fortune
-        </span>
+  <!-- TOP NAVIGATION BAR (FLUSH WITH Y = 0) -->
+  <header id="top" class="sticky top-0 z-40 m-0 p-0 border-b border-white/15 bg-obsidian/95 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
+      <a
+        href="#top"
+        class="font-mono text-xs sm:text-sm font-medium tracking-[0.14em] uppercase text-white hover:text-silver transition-colors truncate"
+      >
+        JULIAN LA FORTUNE // ADVOCACY
       </a>
 
-      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-ash">
-        <a href="#mission" class="hover:text-white transition-colors">01 / Mission</a>
-        <a href="#expertise" class="hover:text-white transition-colors">02 / Expertise</a>
-        <a href="#affiliations" class="hover:text-white transition-colors">03 / Recognition</a>
-        <a href="#contact" class="hover:text-white transition-colors">04 / Contact</a>
+      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-7 font-mono text-xs uppercase tracking-[0.16em] text-silver">
+        <a href="#mission" class="hover:text-white transition-colors py-1">01 / Mission</a>
+        <a href="#pillars" class="hover:text-white transition-colors py-1">02 / Pillars</a>
+        <a href="#recognition" class="hover:text-white transition-colors py-1">03 / Recognition</a>
+        <a href="#contact" class="hover:text-white transition-colors py-1">04 / Contact</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="btn-editorial font-mono text-xs uppercase tracking-wider px-4 py-2 border border-white/25 rounded-full hover:bg-white hover:text-obsidian">
-          Connect
+      <div class="flex items-center gap-2.5">
+        <button
+          type="button"
+          id="open-inquiry-btn"
+          class="font-mono text-xs uppercase tracking-wider px-3.5 py-2 border border-white/30 bg-card rounded-md text-white hover:bg-white hover:text-obsidian transition-colors"
+        >
+          Send Note
+        </button>
+        <a
+          href="#contact"
+          class="hidden sm:inline-flex font-mono text-xs uppercase tracking-wider px-3.5 py-2 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+        >
+          Contact
         </a>
-        <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 border border-white/15 rounded-lg text-white hover:border-white/40 transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 17h16" />
-          </svg>
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="md:hidden font-mono text-xs uppercase tracking-wider px-3 py-2 border border-white/25 rounded-md text-white hover:border-white transition-colors"
+        >
+          Menu
         </button>
       </div>
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-obsidian/95 backdrop-blur-xl px-5 py-5 space-y-4 font-mono text-xs uppercase tracking-widest">
-      <a href="#mission" class="mobile-nav-link block py-1 text-silver hover:text-white">01 / Mission & Lived Experience</a>
-      <a href="#expertise" class="mobile-nav-link block py-1 text-silver hover:text-white">02 / Core Focus Areas</a>
-      <a href="#affiliations" class="mobile-nav-link block py-1 text-silver hover:text-white">03 / Affiliations & Recognition</a>
-      <a href="#contact" class="mobile-nav-link block py-1 text-silver hover:text-white">04 / Direct Contact</a>
-    </div>
+    <!-- Mobile Navigation Drawer -->
+    <nav
+      id="mobile-menu"
+      aria-label="Mobile Navigation"
+      class="hidden md:hidden border-t border-white/10 bg-charcoal px-4 py-3 space-y-1 font-mono text-xs uppercase tracking-widest"
+    >
+      <a href="#mission" class="mobile-nav-link block py-2 px-2 text-silver hover:text-white">01 / Mission &amp; Affiliations</a>
+      <a href="#pillars" class="mobile-nav-link block py-2 px-2 text-silver hover:text-white">02 / Advocacy Pillars</a>
+      <a href="#recognition" class="mobile-nav-link block py-2 px-2 text-silver hover:text-white">03 / Archival Recognition</a>
+      <a href="#contact" class="mobile-nav-link block py-2 px-2 text-silver hover:text-white">04 / Direct Contact</a>
+    </nav>
   </header>
 
-  <main id="top">
+  <main class="flex-1">
+
     <!-- HERO SECTION -->
-    <section class="relative pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36 border-b border-white/10">
-      <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <!-- Top Metadata Strip -->
-        <div class="line-mask mb-8">
-          <div class="line-reveal delay-1 flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10 font-mono text-[11px] sm:text-xs uppercase tracking-[0.18em] text-ash">
-            <div class="flex items-center gap-2.5">
-              <span class="w-2 h-2 rounded-full bg-white status-dot"></span>
-              <span>Ontario, Canada &mdash; Active Advocacy</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <span>DCI Canada</span>
-              <span class="text-white/30">/</span>
-              <span>Better Care Network</span>
-            </div>
+    <section class="border-b border-white/15 py-14 sm:py-20 lg:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-7 border-b border-white/10 font-mono text-xs uppercase tracking-[0.18em] text-silver">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-white status-pulse" aria-hidden="true"></span>
+            <span>HUMAN RIGHTS &amp; CHILD ADVOCATE &middot; YOUTH ADVOCATE &middot; ONTARIO, CANADA</span>
           </div>
+          <span class="text-ash">DOSSIER // JLF-ON-CA</span>
         </div>
 
-        <!-- Primary Name & Pronouns -->
-        <div class="mb-6">
-          <h1 class="font-display font-bold uppercase tracking-[-0.04em] leading-[0.92] text-[clamp(2.85rem,8.5vw,6.75rem)]">
-            <span class="line-mask">
-              <span class="line-reveal delay-2">JULIAN</span>
-            </span>
-            <span class="line-mask">
-              <span class="line-reveal delay-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                <span>LA FORTUNE</span>
-                <span class="font-serif italic font-normal tracking-normal text-2xl sm:text-4xl lg:text-5xl text-silver lowercase">
-                  (He/Him)
-                </span>
-              </span>
-            </span>
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-3 mb-5">
+          <h1 class="font-display font-bold uppercase tracking-[-0.03em] leading-[0.95] text-4xl sm:text-6xl lg:text-7xl text-white">
+            JULIAN LA FORTUNE
           </h1>
+          <span class="font-mono text-xs sm:text-sm uppercase tracking-wider px-3 py-1.5 border border-white/25 bg-card rounded-md text-silver">
+            (He/Him)
+          </span>
         </div>
 
-        <!-- Role & Subtitle Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mt-10 sm:mt-14">
-          <div class="lg:col-span-7">
-            <div class="line-mask">
-              <p class="line-reveal delay-4 font-display text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-white">
-                Human Rights &amp; Child Advocate
-              </p>
-            </div>
-            <div class="line-mask mt-3">
-              <p class="line-reveal delay-4 text-sm sm:text-base text-ash max-w-2xl leading-relaxed">
-                Youth Advocate with <strong class="text-white font-medium">Defence for Children International (DCI) Canada</strong> and member of <strong class="text-white font-medium">Better Care Network</strong> (Transforming Children’s Care) &mdash; working toward structural reform in Ontario’s youth protection and crisis care frameworks.
-              </p>
-            </div>
-          </div>
+        <p class="font-display text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-white max-w-4xl leading-snug mb-5">
+          Human Rights &amp; Child Advocate and Youth Advocate reforming Ontario’s youth protection frameworks.
+        </p>
 
-          <!-- Primary CTAs -->
-          <div class="lg:col-span-5 flex flex-wrap sm:flex-nowrap lg:justify-end gap-3.5">
-            <a href="#contact" class="btn-editorial w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white text-obsidian font-mono text-xs uppercase tracking-widest font-medium px-7 py-4 rounded-full hover:bg-silver">
-              <span>Get in Touch</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9" />
-              </svg>
-            </a>
-            <a href="#mission" class="btn-editorial w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border border-white/25 text-white font-mono text-xs uppercase tracking-widest px-7 py-4 rounded-full hover:border-white hover:bg-white/5">
-              <span>Read Mission</span>
-            </a>
-          </div>
+        <p class="text-base sm:text-lg text-silver max-w-3xl leading-relaxed mb-8">
+          Driven by lived experiences navigating child welfare and crisis care systems as a survivor of psychological and emotional abuse, dedicated to reforming Ontario’s youth protection frameworks so that no child fleeing an unsafe home situation falls through the structural cracks of care.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3.5">
+          <a
+            href="#pillars"
+            class="inline-flex items-center justify-center font-mono text-xs uppercase tracking-widest font-medium px-6 py-3.5 bg-white text-obsidian rounded-md hover:bg-silver transition-colors"
+          >
+            Explore Advocacy Pillars &darr;
+          </a>
+          <a
+            href="#recognition"
+            class="inline-flex items-center justify-center font-mono text-xs uppercase tracking-widest px-6 py-3.5 border border-white/25 bg-card text-white rounded-md hover:border-white transition-colors"
+          >
+            Legal Recognition
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center font-mono text-xs uppercase tracking-widest px-6 py-3.5 border border-white/15 bg-transparent text-silver rounded-md hover:text-white hover:border-white/40 transition-colors"
+          >
+            Direct Contact
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- KINETIC MARQUEE / TICKER BANNER -->
-    <div class="marquee-wrapper border-b border-white/10 bg-charcoal py-4 overflow-hidden select-none" aria-label="Core Advocacy Pillars">
-      <div class="marquee-track font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-silver">
-        <div class="flex items-center gap-8 pr-8">
-          <span>Youth Rights</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Child Protection</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Legislative Reform</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Violence Against Children</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Children's Mental Health</span>
-          <span class="text-white/35">&bull;</span>
-        </div>
-        <div class="flex items-center gap-8 pr-8" aria-hidden="true">
-          <span>Youth Rights</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Child Protection</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Legislative Reform</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Violence Against Children</span>
-          <span class="text-white/35">&bull;</span>
-          <span>Children's Mental Health</span>
-          <span class="text-white/35">&bull;</span>
+    <!-- SLIDING MARQUEE BANNER -->
+    <div class="border-b border-white/15 bg-charcoal py-3.5 select-none" aria-label="Advocacy & Affiliations Ticker">
+      <div class="marquee-wrapper">
+        <div class="marquee-track font-mono text-xs uppercase tracking-[0.2em] text-silver">
+          <div class="flex items-center gap-8 pr-8">
+            <span>JULIAN LA FORTUNE (HE/HIM)</span>
+            <span class="text-ash">//</span>
+            <span>HUMAN RIGHTS &amp; CHILD ADVOCATE</span>
+            <span class="text-ash">//</span>
+            <span>DEFENCE FOR CHILDREN INTERNATIONAL (DCI) CANADA</span>
+            <span class="text-ash">//</span>
+            <span>BETTER CARE NETWORK</span>
+            <span class="text-ash">//</span>
+            <span>YOUTH RIGHTS &amp; ONTARIO PROTECTION REFORM</span>
+            <span class="text-ash">//</span>
+          </div>
+          <div class="flex items-center gap-8 pr-8" aria-hidden="true">
+            <span>JULIAN LA FORTUNE (HE/HIM)</span>
+            <span class="text-ash">//</span>
+            <span>HUMAN RIGHTS &amp; CHILD ADVOCATE</span>
+            <span class="text-ash">//</span>
+            <span>DEFENCE FOR CHILDREN INTERNATIONAL (DCI) CANADA</span>
+            <span class="text-ash">//</span>
+            <span>BETTER CARE NETWORK</span>
+            <span class="text-ash">//</span>
+            <span>YOUTH RIGHTS &amp; ONTARIO PROTECTION REFORM</span>
+            <span class="text-ash">//</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 01 / MISSION & LIVED-EXPERIENCE STATEMENT -->
-    <section id="mission" class="py-20 sm:py-28 lg:py-32 border-b border-white/10">
-      <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-          <!-- Section Index -->
-          <div class="lg:col-span-4 reveal">
-            <div class="lg:sticky lg:top-24">
-              <span class="font-mono text-xs uppercase tracking-[0.2em] text-ash block mb-3">
-                01 / Mission &amp; Mandate
-              </span>
-              <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">
-                Closing the Structural Gaps in Youth Protection.
-              </h2>
-              <p class="mt-4 text-sm text-ash leading-relaxed">
-                Advocacy anchored in lived accountability, human rights law, and systemic reform across Ontario and Canada.
-              </p>
-            </div>
+    <!-- SECTION 01: MISSION, AFFILIATIONS & EXPERTISE BENTO -->
+    <section id="mission" class="border-b border-white/15 py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">01 / MISSION &amp; MANDATE</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Lived Experience, Affiliations &amp; Expertise
+            </h2>
           </div>
+          <span class="font-mono text-xs uppercase tracking-widest text-silver">ONTARIO &middot; CANADA</span>
+        </div>
 
-          <!-- Editorial Statement Block -->
-          <div class="lg:col-span-8 reveal">
-            <div class="spotlight-card rounded-2xl p-7 sm:p-10 lg:p-12">
-              <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-8 font-mono text-[11px] uppercase tracking-widest text-ash">
-                <span>Statement of Purpose</span>
-                <span>DCI Canada &mdash; Youth Advocate</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <!-- Mission Card (7 cols) -->
+          <article class="bento-card spotlight-card lg:col-span-7 rounded-xl p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-4 mb-6 border-b border-white/10 font-mono text-xs uppercase tracking-wider text-silver">
+                <span>CORE MISSION STATEMENT</span>
+                <span class="text-ash">01A</span>
               </div>
 
-              <blockquote class="font-serif italic text-2xl sm:text-3xl lg:text-[2.15rem] leading-[1.32] text-white mb-8">
-                &ldquo;My mission is to ensure that no child fleeing an unsafe home situation falls through the structural gaps of our youth protection and crisis care frameworks.&rdquo;
+              <blockquote class="font-serif italic text-2xl sm:text-3xl leading-snug text-white mb-6">
+                &ldquo;Driven by lived experiences navigating child welfare and crisis care systems as a survivor of psychological and emotional abuse, dedicated to reforming Ontario’s youth protection frameworks so that no child fleeing an unsafe home situation falls through the structural cracks of care.&rdquo;
               </blockquote>
 
-              <div class="space-y-5 text-sm sm:text-base text-silver leading-relaxed font-normal">
-                <p>
-                  As a Youth Advocate for <strong class="text-white font-medium">Defence for Children International (DCI) Canada</strong>, Julian La Fortune’s work is driven by direct lived experience navigating child welfare and crisis care systems as a survivor of psychological and emotional abuse.
-                </p>
-                <p>
-                  Dedicated to reforming <strong class="text-white font-medium">Ontario’s youth protection frameworks</strong>, his advocacy bridges front-line youth reality with institutional policy &mdash; pushing for stronger safeguards against violence toward children, accessible youth mental health interventions, and enforceable rights under international and domestic child protection standards.
-                </p>
+              <p class="text-sm sm:text-base text-silver leading-relaxed mb-4">
+                Working as a Youth Advocate and Human Rights &amp; Child Advocate, Julian translates firsthand knowledge of child welfare and crisis care systems into systemic advocacy focused on safety, accountability, and young people’s rights.
+              </p>
+              <p class="text-sm sm:text-base text-silver leading-relaxed">
+                Alongside direct advocacy work in Ontario and Canada, he engages with international child care communities and continues studying law with a focus on protecting vulnerable youth.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-white/10 flex flex-wrap gap-2 font-mono text-xs text-silver">
+              <span class="px-2.5 py-1 border border-white/15 bg-charcoal rounded">Youth Advocate</span>
+              <span class="px-2.5 py-1 border border-white/15 bg-charcoal rounded">Human Rights &amp; Child Advocate</span>
+              <span class="px-2.5 py-1 border border-white/15 bg-charcoal rounded">Ontario, Canada</span>
+            </div>
+          </article>
+
+          <!-- Right Column: Affiliations + Expertise/Interests (5 cols) -->
+          <div class="lg:col-span-5 flex flex-col gap-5">
+            <!-- Affiliations Card -->
+            <article class="bento-card spotlight-card rounded-xl p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-2 pb-3 mb-5 border-b border-white/10 font-mono text-xs uppercase tracking-wider text-silver">
+                <span>AFFILIATIONS</span>
+                <span class="text-ash">01B</span>
               </div>
 
-              <!-- Key Metrics / Pillars Strip -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-white/10">
-                <div>
-                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Jurisdiction</span>
-                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Ontario &amp; Federal</span>
+              <ul class="space-y-4">
+                <li class="border-l-2 border-white pl-4">
+                  <p class="font-display font-bold text-base sm:text-lg text-white">
+                    Defence for Children International (DCI) Canada
+                  </p>
+                  <p class="font-mono text-xs uppercase tracking-wider text-silver mt-1">
+                    Youth Advocate &middot; Child Human Rights
+                  </p>
+                  <p class="text-sm text-silver mt-1.5 leading-relaxed">
+                    Advocating for youth rights and child protection across Canadian and international child rights frameworks.
+                  </p>
+                </li>
+
+                <li class="border-l-2 border-white/40 pl-4">
+                  <p class="font-display font-bold text-base sm:text-lg text-white">
+                    Better Care Network
+                  </p>
+                  <p class="font-mono text-xs uppercase tracking-wider text-silver mt-1">
+                    Transforming Children’s Care Network
+                  </p>
+                  <p class="text-sm text-silver mt-1.5 leading-relaxed">
+                    Connected with practitioners and advocates advancing safe family and care support for children.
+                  </p>
+                </li>
+              </ul>
+            </article>
+
+            <!-- Expertise & Interests Card -->
+            <article class="bento-card spotlight-card rounded-xl p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-white/10 font-mono text-xs uppercase tracking-wider text-silver">
+                  <span>EXPERTISE &amp; INTERESTS</span>
+                  <span class="text-ash">01C</span>
                 </div>
-                <div>
-                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Core Lens</span>
-                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Lived-Experience Policy</span>
+
+                <p class="font-mono text-[11px] uppercase tracking-widest text-ash mb-2.5">Expertise</p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                  <span class="font-mono text-xs px-3 py-1 bg-charcoal border border-white/20 rounded-md text-white">Youth Rights</span>
+                  <span class="font-mono text-xs px-3 py-1 bg-charcoal border border-white/20 rounded-md text-white">Child Protection</span>
+                  <span class="font-mono text-xs px-3 py-1 bg-charcoal border border-white/20 rounded-md text-white">Violence Against Children</span>
+                  <span class="font-mono text-xs px-3 py-1 bg-charcoal border border-white/20 rounded-md text-white">Children’s Mental Health</span>
                 </div>
-                <div>
-                  <span class="font-mono text-[11px] uppercase tracking-widest text-ash block">Trajectory</span>
-                  <span class="font-display text-base sm:text-lg font-semibold mt-1 block">Child Rights &amp; Law</span>
+
+                <p class="font-mono text-[11px] uppercase tracking-widest text-ash mb-2.5">Interests</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-mono text-xs px-3 py-1 bg-obsidian border border-white/15 rounded-md text-silver">Child Protection</span>
+                  <span class="font-mono text-xs px-3 py-1 bg-obsidian border border-white/15 rounded-md text-silver">Child Human Rights</span>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 02 / CORE FOCUS AREAS & EXPERTISE (INTERACTIVE BENTO GRID) -->
-    <section id="expertise" class="py-20 sm:py-28 lg:py-32 border-b border-white/10">
-      <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <!-- Header & Filter Tabs -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+    <!-- SECTION 02: INTERACTIVE FILTERABLE ADVOCACY PILLARS -->
+    <section id="pillars" class="border-b border-white/15 py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-ash block mb-3">
-              02 / Expertise &amp; Interests
-            </span>
-            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-              Core Advocacy Pillars
+            <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">02 / ADVOCACY PILLARS</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Focus Areas &amp; Policy Priorities
             </h2>
           </div>
 
-          <!-- Interactive Category Filter -->
-          <div role="tablist" aria-label="Filter Expertise Areas" class="inline-flex flex-wrap gap-2 bg-charcoal p-1.5 rounded-full border border-white/10">
-            <button data-filter="all" class="filter-btn active font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full bg-white text-obsidian transition-all">
-              All (05)
+          <!-- Filter Tabs -->
+          <div role="tablist" aria-label="Filter Advocacy Pillars" class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-filter="all"
+              class="filter-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 rounded-md bg-white text-obsidian font-medium border border-white transition-colors"
+            >
+              All (4)
             </button>
-            <button data-filter="policy" class="filter-btn font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full text-ash hover:text-white transition-all">
-              Policy &amp; Law
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="rights"
+              class="filter-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 rounded-md bg-card text-silver border border-white/15 hover:border-white/40 hover:text-white transition-colors"
+            >
+              Youth &amp; Child Rights
             </button>
-            <button data-filter="wellbeing" class="filter-btn font-mono text-[11px] uppercase tracking-wider px-4 py-2 rounded-full text-ash hover:text-white transition-all">
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="protection"
+              class="filter-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 rounded-md bg-card text-silver border border-white/15 hover:border-white/40 hover:text-white transition-colors"
+            >
               Protection &amp; Care
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-filter="mental-health"
+              class="filter-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 rounded-md bg-card text-silver border border-white/15 hover:border-white/40 hover:text-white transition-colors"
+            >
+              Mental Health &amp; Law
             </button>
           </div>
         </div>
 
-        <!-- Bento Grid (5 Cards) -->
-        <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-6 gap-5">
-          <!-- Card 1 (Span 3) -->
-          <article data-category="policy" data-pillar="0" class="pillar-card spotlight-card rounded-2xl p-7 sm:p-8 md:col-span-3 flex flex-col justify-between cursor-pointer group reveal">
+        <div id="pillars-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Pillar 01 -->
+          <article
+            data-categories="rights protection"
+            data-brief="pillar-1"
+            class="pillar-card spotlight-card rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          >
             <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="font-mono text-xs text-ash tracking-widest">PILLAR / 01</span>
-                <span class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white group-hover:text-obsidian transition-colors">
-                  <svg class="w-3.5 h-3.5" fill=
+              <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
+                <span class="font-mono text-xs uppercase tracking-widest text-silver">01 // CHILD HUMAN RIGHTS &amp; YOUTH RIGHTS</span>
+                <span class="font-mono text-xs px-2 py-0.5 border border-white/15 rounded text-ash">BRIEF 01</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3">
+                Youth Rights &amp; Child Human Rights
+              </h3>
+              <p class="text-sm sm:text-base text-silver leading-relaxed">
+                Advocating for children and youth to be heard, respected, and protected as full rights-holders across care systems, schools, and public policy in Ontario and beyond.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+              <span class="font-mono text-xs text-ash">DCI Canada &middot; Child Human Rights</span>
+              <button
+                type="button"
+                data-open-brief="pillar-1"
+                class="open-brief-btn font-mono text-xs uppercase tracking-wider text-white hover:text-silver underline underline-offset-4"
+              >
+                Read Brief &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Pillar 02 -->
+          <article
+            data-categories="protection rights"
+            data-brief="pillar-2"
+            class="pillar-card spotlight-card rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
+                <span class="font-mono text-xs uppercase tracking-widest text-silver">02 // CHILD PROTECTION &amp; ONTARIO REFORM</span>
+                <span class="font-mono text-xs px-2 py-0.5 border border-white/15 rounded text-ash">BRIEF 02</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3">
+                Reforming Ontario’s Youth Protection Frameworks
+              </h3>
+              <p class="text-sm sm:text-base text-silver leading-relaxed">
+                Addressing structural cracks in child welfare and crisis care so no child fleeing an unsafe home situation is left without timely, safe intervention and follow-through.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+              <span class="font-mono text-xs text-ash">Child Protection &middot; Crisis Care</span>
+              <button
+                type="button"
+                data-open-brief="pillar-2"
+                class="open-brief-btn font-mono text-xs uppercase tracking-wider text-white hover:text-silver underline underline-offset-4"
+              >
+                Read Brief &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Pillar 03 -->
+          <article
+            data-categories="protection mental-health"
+            data-brief="pillar-3"
+            class="pillar-card spotlight-card rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
+                <span class="font-mono text-xs uppercase tracking-widest text-silver">03 // VIOLENCE AGAINST CHILDREN</span>
+                <span class="font-mono text-xs px-2 py-0.5 border border-white/15 rounded text-ash">BRIEF 03</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3">
+                Preventing Psychological, Emotional &amp; Systemic Harm
+              </h3>
+              <p class="text-sm sm:text-base text-silver leading-relaxed">
+                Highlighting the serious impact of psychological and emotional abuse alongside physical harm, pushing for clear protective accountability and survivor-informed care.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+              <span class="font-mono text-xs text-ash">Violence Against Children &middot; Safeguards</span>
+              <button
+                type="button"
+                data-open-brief="pillar-3"
+                class="open-brief-btn font-mono text-xs uppercase tracking-wider text-white hover:text-silver underline underline-offset-4"
+              >
+                Read Brief &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Pillar 04 -->
+          <article
+            data-categories="mental-health rights"
+            data-brief="pillar-4"
+            class="pillar-card spotlight-card rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
+                <span class="font-mono text-xs uppercase tracking-widest text-silver">04 // CHILDREN’S MENTAL HEALTH &amp; LEGAL PATH</span>
+                <span class="font-mono text-xs px-2 py-0.5 border border-white/15 rounded text-ash">BRIEF 04</span>
+              </div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3">
+                Children’s Mental Health &amp; Legal Study
+              </h3>
+              <p class="text-sm sm:text-base text-silver leading-relaxed">
+                Advancing compassionate mental health support for young people navigating trauma while studying criminal and statutory law toward a future legal career.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+              <span class="font-mono text-xs text-ash">Children’s Mental Health &middot; Law</span>
+              <button
+                type="button"
+                data-open-brief="pillar-4"
+                class="open-brief-btn font-mono text-xs uppercase tracking-wider text-white hover:text-silver underline underline-offset-4"
+              >
+                Read Brief &rarr;
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: ARCHIVAL & LEGAL RECOGNITION -->
+    <section id="recognition" class="border-b border-white/15 py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div class="mb-10">
+          <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">03 / ARCHIVAL RECORD</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            Legal Recognition &amp; Inscription
+          </h2>
+        </div>
+
+        <article class="spotlight-card rounded-xl p-6 sm:p-10 lg:p-12 border-white/25 bg-card">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-8 border-b border-white/15 font-mono text-xs uppercase tracking-widest text-silver">
+            <span>MARTIN’S POCKET CRIMINAL CODE 2024 // ARCHIVAL NOTE</span>
+            <span>OCTOBER 2026</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <blockquote class="border-l-2 border-white pl-5 sm:pl-7">
+                <p class="font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-white">
+                  &ldquo;Julian &mdash; Best wishes as you contemplate a career in the law. All the best, Peter Tetley, O.C.V. Judge&rdquo;
+                </p>
+              </blockquote>
+
+              <p class="font-mono text-xs uppercase tracking-wider text-silver mt-6 pl-5 sm:pl-7 leading-relaxed">
+                SOURCE: <span class="text-white">MARTIN’S POCKET CRIMINAL CODE 2024</span> &middot; SIGNED BY <span class="text-white">PETER TETLEY, O.C.V. JUDGE</span> &middot; DATED <span class="text-white">OCTOBER 2026</span>
+              </p>
+            </div>
+
+            <div class="lg:col-span-4 bg-charcoal border border-white/15 rounded-lg p-5 sm:p-6 flex flex-col justify-between gap-5">
+              <div class="space-y-2 font-mono text-xs">
+                <span class="text-ash uppercase tracking-widest block">RECORD SUMMARY</span>
+                <p class="text-white font-medium">Judicial Inscription &amp; Legal Encouragement</p>
+                <p class="text-silver leading-relaxed">
+                  Written inside Martin’s Pocket Criminal Code 2024 in October 2026 as Julian pursues child rights advocacy and legal studies.
+                </p>
+              </div>
+              <button
+                type="button"
+                data-open-brief="inscription"
+                class="open-brief-btn w-full font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+              >
+                Inspect Archive Details
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 04: DIRECT CONTACT -->
+    <section id="contact" class="py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">04 / DIRECT CONTACT</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Connect With Julian La Fortune
+            </h2>
+            <p class="text-sm sm:text-base text-silver mt-2 max-w-2xl">
+              Available for child rights advocacy, youth protection reform discussions, speaking, and collaborative initiatives in Ontario and across Canada.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="open-inquiry-btn-2"
+            class="font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors self-start sm:self-auto"
+          >
+            Compose Inquiry
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Email Card -->
+          <article class="spotlight-card rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">EMAIL</span>
+              <a
+                href="mailto:ecode5934@gmail.com"
+                class="font-display text-lg sm:text-xl font-bold text-white hover:text-silver transition-colors break-all"
+              >
+                ecode5934@gmail.com
+              </a>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                data-copy="ecode5934@gmail.com"
+                data-label="Email"
+                class="copy-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+              >
+                Copy Email
+              </button>
+              <a href="mailto:ecode5934@gmail.com" class="font-mono text-xs uppercase tracking-wider text-silver hover:text-white">
+                Email &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Phone Card -->
+          <article class="spotlight-card rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">PHONE</span>
+              <a
+                href="tel:+17052575934"
+                class="font-display text-xl sm:text-2xl font-bold text-white hover:text-silver transition-colors"
+              >
+                705-257-5934
+              </a>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                data-copy="705-257-5934"
+                data-label="Phone"
+                class="copy-btn font-mono text-xs uppercase tracking-wider px-3.5 py-2 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+              >
+                Copy Phone
+              </button>
+              <a href="tel:+17052575934" class="font-mono text-xs uppercase tracking-wider text-silver hover:text-white">
+                Call &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Location Card -->
+          <article class="spotlight-card rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-ash block mb-2">LOCATION</span>
+              <p class="font-display text-xl sm:text-2xl font-bold text-white">
+                Ontario, Canada
+              </p>
+              <p class="font-mono text-xs text-silver mt-1.5">
+                Julian La Fortune (He/Him) &middot; Youth Advocate
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs uppercase tracking-wider text-ash">
+              DCI CANADA &middot; BETTER CARE NETWORK
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/15 bg-charcoal py-7">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs text-silver">
+      <div>
+        <span class="text-white font-medium uppercase">JULIAN LA FORTUNE (HE/HIM)</span>
+        <span class="text-ash"> &mdash; Human Rights &amp; Child Advocate &middot; Ontario, Canada</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <span>&copy; <span id="copyright-year">2026</span> Julian La Fortune</span>
+        <a href="#top" class="text-white hover:text-silver underline underline-offset-4">Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DETAIL BRIEF MODAL -->
+  <div
+    id="brief-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="brief-modal-title"
+    class="modal-overlay fixed inset-0 z-50 items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+  >
+    <div class="w-full max-w-xl bg-card border border-white/25 rounded-xl p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between gap-4 pb-4 mb-5 border-b border-white/10">
+        <span id="brief-modal-tag" class="font-mono text-xs uppercase tracking-widest text-silver">BRIEF</span>
+        <button
+          type="button"
+          id="close-brief-modal"
+          class="font-mono text-xs uppercase tracking-wider px-3 py-1.5 border border-white/20 rounded-md text-white hover:bg-white hover:text-obsidian transition-colors"
+        >
+          Close [ESC]
+        </button>
+      </div>
+
+      <h3 id="brief-modal-title" class="font-display text-2xl sm:text-3xl font-bold text-white mb-3"></h3>
+      <p id="brief-modal-summary" class="text-sm sm:text-base text-silver leading-relaxed mb-5"></p>
+      <ul id="brief-modal-points" class="space-y-2.5 text-sm text-white border-t border-white/10 pt-4"></ul>
+
+      <div class="mt-7 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+        <a
+          href="#contact"
+          id="brief-modal-contact"
+          class="font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+        >
+          Reach Out
+        </a>
+        <button
+          type="button"
+          id="brief-modal-dismiss"
+          class="font-mono text-xs uppercase tracking-wider text-silver hover:text-white"
+        >
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK INQUIRY MODAL -->
+  <div
+    id="inquiry-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="inquiry-modal-title"
+    class="modal-overlay fixed inset-0 z-50 items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+  >
+    <div class="w-full max-w-lg bg-card border border-white/25 rounded-xl p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between gap-4 pb-4 mb-5 border-b border-white/10">
+        <span class="font-mono text-xs uppercase tracking-widest text-silver">DIRECT MESSAGE // ECODE5934@GMAIL.COM</span>
+        <button
+          type="button"
+          id="close-inquiry-modal"
+          class="font-mono text-xs uppercase tracking-wider px-3 py-1.5 border border-white/20 rounded-md text-white hover:bg-white hover:text-obsidian transition-colors"
+        >
+          Close [ESC]
+        </button>
+      </div>
+
+      <h3 id="inquiry-modal-title" class="font-display text-2xl font-bold text-white mb-2">
+        Send a Note to Julian La Fortune
+      </h3>
+      <p class="text-sm text-silver mb-5">
+        Draft a message below to open your email client addressed to <span class="text-white font-mono text-xs">ecode5934@gmail.com</span> or copy it directly.
+      </p>
+
+      <form id="inquiry-form" class="space-y-4">
+        <div>
+          <label for="sender-name" class="block font-mono text-xs uppercase tracking-wider text-silver mb-1.5">Your Name</label>
+          <input
+            type="text"
+            id="sender-name"
+            required
+            placeholder="Full name or organization"
+            class="w-full px-3.5 py-2.5 bg-charcoal border border-white/20 rounded-md text-sm text-white placeholder-ash focus:outline-none focus:border-white"
+          />
+        </div>
+        <div>
+          <label for="sender-topic" class="block font-mono text-xs uppercase tracking-wider text-silver mb-1.5">Topic</label>
+          <input
+            type="text"
+            id="sender-topic"
+            required
+            placeholder="Youth rights, child protection, advocacy, speaking..."
+            class="w-full px-3.5 py-2.5 bg-charcoal border border-white/20 rounded-md text-sm text-white placeholder-ash focus:outline-none focus:border-white"
+          />
+        </div>
+        <div>
+          <label for="sender-message" class="block font-mono text-xs uppercase tracking-wider text-silver mb-1.5">Message</label>
+          <textarea
+            id="sender-message"
+            rows="4"
+            required
+            placeholder="Write your note..."
+            class="w-full px-3.5 py-2.5 bg-charcoal border border-white/20 rounded-md text-sm text-white placeholder-ash focus:outline-none focus:border-white"
+          ></textarea>
+        </div>
+        <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+          <button
+            type="submit"
+            class="font-mono text-xs uppercase tracking-wider px-5 py-2.5 bg-white text-obsidian font-medium rounded-md hover:bg-silver transition-colors"
+          >
+            Open in Email App &rarr;
+          </button>
+          <span class="font-mono text-xs text-ash">Tel: 705-257-5934</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST BANNER -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-md bg-white text-obsidian font-mono text-xs uppercase tracking-wider font-medium shadow-xl"
+  >
+    <span class="w-2 h-2 rounded-full bg-obsidian" aria-hidden="true"></span>
+    <span id="toast-message">Copied</span>
+  </div>
+
+  <script>
+    (function () {
+      // Dynamic year in footer
+      const yearEl = document.getElementById('copyright-year');
+      if (yearEl) {
+        yearEl.textContent = String(Math.max(2026, new Date().getFullYear()));
+      }
+
+      // Mobile navigation toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const opening = mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden', !opening);
+          mobileBtn.setAttribute('aria-expanded', String(opening));
+        });
+
+        mobileMenu.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Spotlight hover tracking across cards
+      document.querySelectorAll('.spotlight-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--spot-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--spot-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      // Pillar filter tabs
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const pillarCards = document.querySelectorAll('.pillar-card');
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          filterBtns.forEach((b) => {
+            const active = b === btn;
+            b.setAttribute('aria-selected', String(active));
+            if (active) {
+              b.classList.remove('bg-card', 'text-silver', 'border-white/15');
+              b.classList.add('bg-white', 'text-obsidian', 'font-medium', 'border-white');
+            } else {
+              b.classList.remove('bg-white', 'text-obsidian', 'font-medium', 'border-white');
+              b.classList.add('bg-card', 'text-silver', 'border-white/15');
+            }
+          });
+
+          pillarCards.forEach((card) => {
+            const cats = (card.getAttribute('data-categories') || '').split(/\s+/);
+            const show = filter === 'all' || cats.includes(filter);
+            card.classList.toggle('hidden', !show);
+          });
+        });
+      });
+
+      // Brief & Archival Modal Content
+      const briefs = {
+        'pillar-1': {
+          tag: 'BRIEF 01 // YOUTH RIGHTS & CHILD HUMAN RIGHTS',
+          title: 'Youth Rights & Child Human Rights',
+          summary: 'Advocating for children and youth to be heard, respected, and protected as full rights-holders across care systems, schools, and public policy in Ontario and beyond.',
+          points: [
+            'Centering young people’s voices and dignity in decisions that shape their daily safety and future.',
+            'Connecting youth advocacy with Defence for Children International (DCI) Canada and child human rights standards.',
+            'Promoting transparency and youth-informed accountability across child-serving institutions.'
+          ]
+        },
+        'pillar-2': {
+          tag: 'BRIEF 02 // CHILD PROTECTION & ONTARIO REFORM',
+          title: 'Reforming Ontario’s Youth Protection Frameworks',
+          summary: 'Addressing structural cracks in child welfare and crisis care so no child fleeing an unsafe home situation is left without timely, safe intervention and follow-through.',
+          points: [
+            'Drawing on lived experience navigating child welfare and crisis care systems to pinpoint structural gaps.',
+            'Advocating for stronger crisis care pathways for youth fleeing unsafe home environments.',
+            'Engaging with Better Care Network and child protection advocates on systemic care improvements.'
+          ]
+        },
+        'pillar-3': {
+          tag: 'BRIEF 03 // VIOLENCE AGAINST CHILDREN',
+          title: 'Preventing Psychological, Emotional & Systemic Harm',
+          summary: 'Highlighting the serious impact of psychological and emotional abuse alongside physical harm, pushing for clear protective accountability and survivor-informed care.',
+          points: [
+            'Recognizing psychological and emotional abuse as core child protection and human rights concerns.',
+            'Advocating for earlier, more responsive protective intervention before crises escalate.',
+            'Supporting survivor-informed approaches that prioritize safety, trust, and dignity.'
+          ]
+        },
+        'pillar-4': {
+          tag: 'BRIEF 04 // CHILDREN’S MENTAL HEALTH & LEGAL PATH',
+          title: 'Children’s Mental Health & Legal Study',
+          summary: 'Advancing compassionate mental health support for young people navigating trauma while studying criminal and statutory law toward a future legal career.',
+          points: [
+            'Supporting accessible, trauma-informed mental health care for children and youth.',
+            'Studying Canadian criminal and statutory law to strengthen youth rights advocacy.',
+            'Bridging legal literacy, human rights, and lived youth experience.'
+          ]
+        },
+        'inscription': {
+          tag: 'ARCHIVE RECORD // OCTOBER 2026',
+          title: 'Martin’s Pocket Criminal Code 2024 — Inscription',
+          summary: 'Inscribed in October 2026 inside Martin’s Pocket Criminal Code 2024 by Ontario Court of Justice Judge Peter Tetley.',
+          points: [
+            'Inscription: "Julian — Best wishes as you contemplate a career in the law. All the best, Peter Tetley, O.C.V. Judge"',
+            'Dated October 2026 in Martin’s Pocket Criminal Code 2024.',
+            'Reflects ongoing encouragement for legal study and human rights advocacy.'
+          ]
+        }
+      };
+
+      const briefModal = document.getElementById('brief-modal');
+      const briefTag = document.getElementById('brief-modal-tag');
+      const briefTitle = document.getElementById('brief-modal-title');
+      const briefSummary = document.getElementById('brief-modal-summary');
+      const briefPoints = document.getElementById('brief-modal-points');
+
+      function openBrief(key) {
+        const data = briefs[key];
+        if (!data || !briefModal) return;
+        briefTag.textContent = data.tag;
+        briefTitle.textContent = data.title;
+        briefSummary.textContent = data.summary;
+        briefPoints.innerHTML = data.points
+          .map((pt) => `<li class="flex items-start gap-2.5"><span class="font-mono text-xs text-ash mt-0.5">&rarr;</span><span>${pt}</span></li>`)
+          .join('');
+        briefModal.classList.add('is-open');
+      }
+
+      function closeBrief() {
+        if (briefModal) briefModal.classList.remove('is-open');
+      }
+
+      document.querySelectorAll('.open-brief-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openBrief(btn.getAttribute('data-open-brief'));
+        });
+      });
+
+      ['close-brief-modal', 'brief-modal-dismiss', 'brief-modal-contact'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', closeBrief);
+      });
+
+      if (briefModal) {
+        briefModal.addEventListener('click', (e) => {
+          if (e.target === briefModal) closeBrief();
+        });
+      }
+
+      // Inquiry Modal
+      const inquiryModal = document.getElementById('inquiry-modal');
+      function openInquiry() {
+        if (inquiryModal) inquiryModal.classList.add('is-open');
+      }
+      function closeInquiry() {
+        if (inquiryModal) inquiryModal.classList.remove('is-open');
+      }
+
+      ['open-inquiry-btn', 'open-inquiry-btn-2'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', openInquiry);
+      });
+
+      const closeInquiryBtn = document.getElementById('close-inquiry-modal');
+      if (closeInquiryBtn) closeInquiryBtn.addEventListener('click', closeInquiry);
+
+      if (inquiryModal) {
+        inquiryModal.addEventListener('click', (e) => {
+          if (e.target === inquiryModal) closeInquiry();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeBrief();
+          closeInquiry();
+        }
+      });
+
+      // Inquiry form launches mailto with drafted note
+      const inquiryForm = document.getElementById('inquiry-form');
+      if (inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = (document.getElementById('sender-name').value || '').trim();
+          const topic = (document.getElementById('sender-topic').value || '').trim();
+          const msg = (document.getElementById('sender-message').value || '').trim();
+
+          const subject = encodeURIComponent(`Advocacy Inquiry: ${topic || 'Message for Julian La Fortune'}`);
+          const body = encodeURIComponent(`From: ${name}\n\n${msg}`);
+          window.location.href = `mailto:ecode5934@gmail.com?subject=${subject}&body=${body}`;
+          closeInquiry();
+        });
+      }
+
+      // Toast & clipboard copy
+      const toastEl = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      let toastTimeout;
+
+      function showToast(text) {
+        if (!toastEl || !toastMsg) return;
+        toastMsg.textContent = text;
+        toastEl.classList.remove('hidden');
+        toastEl.classList.add('flex');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toastEl.classList.add('hidden');
+          toastEl.classList.remove('flex');
+        }, 2500);
+      }
+
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const value = btn.getAttribute('data-copy') || '';
+          const label = btn.getAttribute('data-label') || 'Contact';
+
+          const helper = document.createElement('textarea');
+          helper.value = value;
+          helper.setAttribute('readonly', '');
+          helper.style.position = 'fixed';
+          helper.style.left = '-9999px';
+          document.body.appendChild(helper);
+          helper.select();
+
+          try {
+            document.execCommand('copy');
+            showToast(`${label} copied: ${value}`);
+          } catch (_err) {
+            showToast(`Copy manually: ${value}`);
+          }
+
+          document.body.removeChild(helper);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
