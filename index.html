@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Julian La Fortune — Human Rights & Child Advocate. Structural reform, child protection, public accountability, and legal-policy advocacy." />
+  <meta name="description" content="Julian La Fortune — Human Rights & Child Advocate." />
   <title>Julian La Fortune — Human Rights & Child Advocate</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,6 @@
       --bg: #050505;
       --surface: #0b0b0b;
       --surface-elevated: #111111;
-      --surface-hover: #161616;
       --text: #ffffff;
       --text-secondary: #bcbcbc;
       --text-muted: #828282;
@@ -25,7 +24,6 @@
       --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-serif: "Instrument Serif", Georgia, serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      --font-pronoun: "Times New Roman", Times, Georgia, serif;
       --radius-pill: 999px;
       --radius-sm: 2px;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -196,8 +194,7 @@
       white-space: nowrap;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active-link {
+    .nav-links a:hover {
       color: var(--text);
       border-bottom-color: var(--text);
     }
@@ -402,27 +399,8 @@
       margin-bottom: 1.4rem;
     }
 
-    .hero-name-first,
-    .hero-name-last-row {
+    .hero-name-line {
       display: block;
-    }
-
-    .hero-name-last-row {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .pronouns-inline {
-      font-family: var(--font-pronoun);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.05rem;
-      letter-spacing: 0.01em;
-      text-transform: none;
-      line-height: 1.2;
-      color: var(--text-secondary);
     }
 
     .hero-role {
@@ -449,38 +427,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .metric-box {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .metric-num {
-      font-family: var(--font-display);
-      font-size: clamp(1.45rem, 2.4vw, 2rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      line-height: 1.1;
-    }
-
-    .metric-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
     }
 
     /* Profile Snapshot Card */
@@ -758,7 +704,7 @@
       color: var(--text);
     }
 
-    /* Methodology & Timeline Section */
+    /* Methodology & Table Section */
     .methodology-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -994,7 +940,13 @@
       padding-top: 1rem;
     }
 
-    /* Contact Section */
+    .faq-answer a {
+      color: var(--text);
+      border-bottom: 1px solid var(--border-strong);
+      text-decoration: none;
+    }
+
+    /* Contact Us Section */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1030,6 +982,17 @@
       word-break: break-word;
     }
 
+    .contact-value a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 2px;
+    }
+
+    .contact-value a:hover {
+      border-bottom-color: var(--text);
+    }
+
     .contact-note {
       margin-top: 0.5rem;
       font-size: 0.9rem;
@@ -1043,7 +1006,7 @@
       gap: 0.65rem;
     }
 
-    .dispatch-form {
+    .contact-form {
       background: var(--surface);
       border: 1px solid var(--border);
       padding: 2rem;
@@ -1319,7 +1282,6 @@
         padding-bottom: 3rem;
       }
 
-      .hero-metrics,
       .methodology-grid {
         grid-template-columns: 1fr;
       }
@@ -1355,8 +1317,8 @@
         </nav>
 
         <div class="nav-actions">
-          <button type="button" class="btn btn-sm" id="copyEmailTopBtn">Copy Email</button>
-          <a href="#contact" class="btn btn-primary btn-sm">Direct Dispatch</a>
+          <a href="tel:+17052575934" class="btn btn-sm">705-257-5934</a>
+          <a href="#contact" class="btn btn-primary btn-sm">Contact Us</a>
         </div>
 
         <button
@@ -1378,11 +1340,12 @@
           <li><a href="#recognition" class="drawer-link">Recognition</a></li>
           <li><a href="#affiliations" class="drawer-link">Affiliations</a></li>
           <li><a href="#faq" class="drawer-link">Protocols</a></li>
-          <li><a href="#contact" class="drawer-link">Contact</a></li>
+          <li><a href="#contact" class="drawer-link">Contact Us</a></li>
         </ul>
         <div class="mobile-drawer-actions">
-          <button type="button" class="btn btn-sm" id="copyEmailDrawerBtn">Copy Email</button>
-          <a href="#contact" class="btn btn-primary btn-sm drawer-link">Direct Dispatch</a>
+          <a href="mailto:ecode5934@gmail.com" class="btn btn-sm">Email</a>
+          <a href="tel:+17052575934" class="btn btn-sm">Call 705-257-5934</a>
+          <a href="#contact" class="btn btn-primary btn-sm drawer-link">Contact Us</a>
         </div>
       </div>
     </header>
@@ -1424,16 +1387,13 @@
                 <span>Public Interest & Safeguarding</span>
                 <span class="status-indicator">
                   <span class="status-dot" aria-hidden="true"></span>
-                  <span>Active Advocacy & Advisory</span>
+                  <span>Human Rights & Child Advocacy</span>
                 </span>
               </div>
 
               <h1 class="hero-name">
-                <span class="hero-name-first">Julian</span>
-                <span class="hero-name-last-row">
-                  <span>La Fortune</span>
-                  <span class="pronouns-inline">(he/him)</span>
-                </span>
+                <span class="hero-name-line">Julian</span>
+                <span class="hero-name-line">La Fortune</span>
               </h1>
 
               <p class="hero-role">Human Rights & Child Advocate</p>
@@ -1446,63 +1406,47 @@
 
               <p class="hero-mission">
                 Every inquiry, review, and reform brief is approached with disciplined evidence gathering,
-                respect for lived experience, and a commitment to measurable institutional change rather than
-                performative statements.
+                respect for lived experience, and a commitment to measurable institutional change.
               </p>
 
               <div class="hero-cta-group">
                 <a href="#pillars" class="btn btn-primary">Explore Advocacy Pillars</a>
                 <a href="#methodology" class="btn">View Framework</a>
-                <a href="#contact" class="btn">Initiate Contact</a>
-              </div>
-
-              <div class="hero-metrics" aria-label="Key Focus Metrics">
-                <div class="metric-box">
-                  <span class="metric-num">06</span>
-                  <span class="metric-label">Core Advocacy Pillars</span>
-                </div>
-                <div class="metric-box">
-                  <span class="metric-num">04</span>
-                  <span class="metric-label">Stage Review Protocol</span>
-                </div>
-                <div class="metric-box">
-                  <span class="metric-num">100%</span>
-                  <span class="metric-label">Evidence & Dignity First</span>
-                </div>
+                <a href="#contact" class="btn">Contact Us</a>
               </div>
             </div>
 
-            <aside class="snapshot-card" aria-label="Advocacy Snapshot">
+            <aside class="snapshot-card" aria-label="Contact & Overview">
               <div class="snapshot-header">
-                <span>Dossier Snapshot</span>
-                <span>REF // JLF-01</span>
+                <span>Contact Us</span>
+                <span>DIRECT</span>
               </div>
 
               <div class="snapshot-item">
-                <span class="snapshot-label">Primary Mandate</span>
-                <span class="snapshot-value">Human Rights, Child Safeguarding & Institutional Accountability</span>
+                <span class="snapshot-label">Role</span>
+                <span class="snapshot-value">Human Rights & Child Advocate</span>
               </div>
 
               <div class="snapshot-item">
-                <span class="snapshot-label">Core Method</span>
-                <span class="snapshot-value">Record-backed analysis, stakeholder alignment, and clear policy recommendations</span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Engagement Modes</span>
-                <span class="snapshot-value">Briefings, safeguarding reviews, public commentary, and collaborative coalitions</span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Direct Desk</span>
+                <span class="snapshot-label">Email</span>
                 <span class="snapshot-value">
-                  <a href="mailto:advocacy@julianlafortune.org">advocacy@julianlafortune.org</a>
+                  <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a>
                 </span>
               </div>
 
               <div class="snapshot-item">
-                <span class="snapshot-label">Operating Standard</span>
-                <span class="snapshot-value">Confidential intake triage with transparent boundary setting</span>
+                <span class="snapshot-label">Phone</span>
+                <span class="snapshot-value">
+                  <a href="tel:+17052575934">705-257-5934</a>
+                </span>
+              </div>
+
+              <div class="snapshot-item">
+                <span class="snapshot-label">Quick Actions</span>
+                <div class="contact-actions" style="margin-top: 0.35rem;">
+                  <a href="mailto:ecode5934@gmail.com" class="btn btn-primary btn-sm">Send Email</a>
+                  <a href="tel:+17052575934" class="btn btn-sm">Call Now</a>
+                </div>
               </div>
             </aside>
           </div>
@@ -1520,27 +1464,27 @@
           </div>
 
           <p class="section-lead">
-            Institutional failures rarely happen in a single vacuum—they compound when oversight is opaque,
-            language obscures accountability, or children and families lack clear channels to be heard.
-            This work bridges frontline realities with rigorous documentation and practical reform.
+            Institutional failures compound when oversight is opaque, language obscures accountability, or
+            children and families lack clear channels to be heard. This work connects frontline realities
+            with clear documentation and practical reform.
           </p>
 
           <div class="mission-grid">
             <article class="mission-panel">
               <span class="mission-panel-tag">Principle 01 // Child-Centered Priority</span>
-              <h3 class="mission-panel-title">Best Interests Without Compromise</h3>
+              <h3 class="mission-panel-title">Best Interests & Safeguarding</h3>
               <p>
-                Children and youth require clear safeguards, trauma-informed communication, and structures
-                that prioritize safety, stability, and developmental wellbeing over bureaucratic convenience.
+                Children and youth require clear safeguards, respectful communication, and structures
+                that prioritize safety, stability, and wellbeing.
               </p>
             </article>
 
             <article class="mission-panel">
               <span class="mission-panel-tag">Principle 02 // Institutional Clarity</span>
-              <h3 class="mission-panel-title">Turning Friction Into Reform</h3>
+              <h3 class="mission-panel-title">Accountability & Reform</h3>
               <p>
                 Sustained change requires mapping exact decision points, identifying where rights protections
-                break down, and proposing concrete operational fixes that organizations can actually implement.
+                break down, and proposing concrete operational fixes.
               </p>
             </article>
           </div>
@@ -1577,7 +1521,7 @@
                   where children and young people face risk or neglect.
                 </p>
                 <ul class="pillar-deliverables">
-                  <li>Safeguarding gap audits and risk matrices</li>
+                  <li>Safeguarding policy & gap reviews</li>
                   <li>Clear reporting and escalation pathways</li>
                 </ul>
               </div>
@@ -1705,8 +1649,8 @@
         <div class="container">
           <div class="section-header">
             <div>
-              <span class="section-index">03 // Methodology & Ledger</span>
-              <h2 class="section-title">How Work Moves From Intake to Impact</h2>
+              <span class="section-index">03 // Framework & Workstreams</span>
+              <h2 class="section-title">How Work Moves From Intake to Action</h2>
             </div>
           </div>
 
@@ -1715,8 +1659,7 @@
               <span class="step-num">Stage 01 // Intake</span>
               <h3 class="step-title">Scope & Boundary Check</h3>
               <p class="step-desc">
-                Clarify objectives, urgency, confidentiality limits, and whether this site's advocacy scope
-                matches the request.
+                Clarify objectives, urgency, confidentiality limits, and alignment with core advocacy priorities.
               </p>
             </div>
 
@@ -1724,8 +1667,7 @@
               <span class="step-num">Stage 02 // Audit</span>
               <h3 class="step-title">Evidence & Timeline Mapping</h3>
               <p class="step-desc">
-                Organize facts, policies, dates, and institutional touchpoints into a coherent, verifiable
-                record.
+                Organize facts, policies, dates, and institutional touchpoints into a coherent, verifiable record.
               </p>
             </div>
 
@@ -1733,8 +1675,7 @@
               <span class="step-num">Stage 03 // Strategy</span>
               <h3 class="step-title">Targeted Recommendations</h3>
               <p class="step-desc">
-                Identify concrete safeguards, policy adjustments, or escalation paths grounded in rights and
-                feasibility.
+                Identify concrete safeguards, policy adjustments, or escalation paths grounded in rights and practicality.
               </p>
             </div>
 
@@ -1742,7 +1683,7 @@
               <span class="step-num">Stage 04 // Follow-Through</span>
               <h3 class="step-title">Review & Accountability</h3>
               <p class="step-desc">
-                Track commitments, revisit outcomes, and refine documentation so gains hold over time.
+                Track commitments, revisit outcomes, and refine documentation so improvements hold over time.
               </p>
             </div>
           </div>
@@ -1762,7 +1703,7 @@
                   <td><strong>Child Safeguarding Reviews</strong></td>
                   <td>Protective protocols & youth safety</td>
                   <td>Structured risk & policy gap briefs</td>
-                  <td>Child-first, non-punitive clarity</td>
+                  <td>Child-first, clear boundaries</td>
                 </tr>
                 <tr>
                   <td><strong>Institutional Oversight</strong></td>
@@ -1780,7 +1721,7 @@
                   <td><strong>Community & Family Guidance</strong></td>
                   <td>Navigating processes & rights literacy</td>
                   <td>Plain-language checklists & referrals</td>
-                  <td>Empathetic, clear boundaries</td>
+                  <td>Respectful, transparent scope</td>
                 </tr>
               </tbody>
             </table>
@@ -1794,26 +1735,26 @@
           <div class="section-header">
             <div>
               <span class="section-index">04 // Legal & Recognition</span>
-              <h2 class="section-title">Judicial & Public Record</h2>
+              <h2 class="section-title">Public Record & Recognition</h2>
             </div>
           </div>
 
           <div class="recognition-layout">
             <article class="plaque">
-              <div class="plaque-source">Public Record Highlight // Judicial Recognition</div>
+              <div class="plaque-source">Public Record Highlight</div>
               <blockquote class="plaque-quote">
                 "Advocacy grounded in principle, persistence, and care for human dignity leaves a lasting
                 mark on the institutions and communities it challenges to do better."
               </blockquote>
               <div class="plaque-attribution">
-                <span class="plaque-judge">Recorded Recognition — Advocacy & Public Interest</span>
-                <span class="plaque-detail">Highlighted for principled engagement & commitment to child and human rights</span>
+                <span class="plaque-judge">Julian La Fortune — Human Rights & Child Advocate</span>
+                <span class="plaque-detail">Commitment to child protection, due process & accountability</span>
               </div>
             </article>
 
             <div class="affiliations-panel" id="affiliations">
               <div class="affiliation-card">
-                <span class="affiliation-tag">Mandate // Child Welfare</span>
+                <span class="affiliation-tag">Focus // Child Welfare</span>
                 <h3 class="affiliation-name">Child Rights & Safeguarding Standards</h3>
                 <p class="affiliation-desc">
                   Focused on ensuring protective systems operate transparently, responsively, and with the
@@ -1822,7 +1763,7 @@
               </div>
 
               <div class="affiliation-card">
-                <span class="affiliation-tag">Mandate // Civil & Human Rights</span>
+                <span class="affiliation-tag">Focus // Civil & Human Rights</span>
                 <h3 class="affiliation-name">Dignity, Equity & Accountability</h3>
                 <p class="affiliation-desc">
                   Advocating for clear remedies, fair treatment, and institutional responsibility when rights
@@ -1831,7 +1772,7 @@
               </div>
 
               <div class="affiliation-card">
-                <span class="affiliation-tag">Mandate // Collaborative Action</span>
+                <span class="affiliation-tag">Focus // Collaborative Action</span>
                 <h3 class="affiliation-name">Coalitions, Advocates & Allies</h3>
                 <p class="affiliation-desc">
                   Working alongside principled partners, community voices, and reformers committed to durable
@@ -1849,124 +1790,127 @@
           <div class="section-header">
             <div>
               <span class="section-index">05 // Protocols & Boundaries</span>
-              <h2 class="section-title">Important Notes Before Reaching Out</h2>
+              <h2 class="section-title">Before You Contact Us</h2>
             </div>
           </div>
 
           <div class="faq-list">
             <details class="faq-item">
-              <summary>Is this website a substitute for legal representation or emergency services?</summary>
+              <summary>Is this site a substitute for legal counsel or emergency services?</summary>
               <div class="faq-answer">
-                No. Advocacy and policy work here are informational and strategic in nature—not formal legal
-                representation. If a child or person is in immediate physical danger or crisis, contact local
-                emergency services or designated child protection / crisis hotlines immediately.
+                No. Advocacy and policy work shared here do not constitute formal legal representation. If
+                someone is in immediate physical danger or acute crisis, contact local emergency services or
+                designated child protection / crisis hotlines immediately.
               </div>
             </details>
 
             <details class="faq-item">
-              <summary>What kinds of inquiries are most helpful to share?</summary>
+              <summary>How can we reach you directly?</summary>
               <div class="faq-answer">
-                Clear summaries of systemic issues, child safeguarding concerns, policy or institutional
-                oversight questions, coalition or speaking invitations, and collaboration proposals. Keep
-                initial messages concise and factual without sending sensitive personal ID numbers.
+                You can email <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a> or call
+                <a href="tel:+17052575934">705-257-5934</a>. For detailed written summaries or documents,
+                email is typically easiest to reference.
               </div>
             </details>
 
             <details class="faq-item">
-              <summary>How are messages handled and prioritized?</summary>
+              <summary>What details are most helpful in an initial message?</summary>
               <div class="faq-answer">
-                Messages are reviewed carefully against current bandwidth, safeguarding relevance, and
-                alignment with core advocacy pillars. Not every inquiry requires a lengthy back-and-forth,
-                and clear boundaries are shared whenever a matter falls outside this scope.
+                Share a concise, factual summary of what happened, relevant dates, the institutions or
+                policies involved, and what kind of support, collaboration, or information you are looking for.
               </div>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- Contact Section -->
+      <!-- Contact Us Section -->
       <section id="contact" class="section reveal">
         <div class="container">
           <div class="section-header">
             <div>
-              <span class="section-index">06 // Contact & Dispatch</span>
-              <h2 class="section-title">Direct Channels</h2>
+              <span class="section-index">06 // Contact Us</span>
+              <h2 class="section-title">Contact Us</h2>
             </div>
           </div>
 
           <div class="contact-grid">
             <div class="contact-box">
               <div>
-                <span class="contact-label">Electronic Mail</span>
-                <div class="contact-value">advocacy@julianlafortune.org</div>
+                <span class="contact-label">Email</span>
+                <div class="contact-value">
+                  <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a>
+                </div>
                 <p class="contact-note">
-                  Best for structured briefs, advocacy inquiries, coalition notes, and formal correspondence.
+                  Click the email address or button below to open your mail app.
                 </p>
               </div>
               <div class="contact-actions">
-                <button type="button" class="btn btn-primary" id="copyEmailMainBtn">Copy Address</button>
-                <a href="mailto:advocacy@julianlafortune.org" class="btn">Open Mail Client</a>
+                <a href="mailto:ecode5934@gmail.com" class="btn btn-primary">Email ecode5934@gmail.com</a>
+                <button type="button" class="btn" id="copyEmailBtn">Copy Email</button>
               </div>
             </div>
 
             <div class="contact-box">
               <div>
-                <span class="contact-label">Advocacy & Public Work</span>
-                <div class="contact-value">Julian La Fortune</div>
+                <span class="contact-label">Phone</span>
+                <div class="contact-value">
+                  <a href="tel:+17052575934">705-257-5934</a>
+                </div>
                 <p class="contact-note">
-                  Human Rights & Child Advocate — dedicated to protection, accountability, and principled reform.
+                  Click the phone number or button below to place a call from a phone or dialer app.
                 </p>
               </div>
               <div class="contact-actions">
-                <a href="#pillars" class="btn">Review Pillars</a>
-                <a href="#top" class="btn">Back to Top</a>
+                <a href="tel:+17052575934" class="btn btn-primary">Call 705-257-5934</a>
+                <button type="button" class="btn" id="copyPhoneBtn">Copy Number</button>
               </div>
             </div>
           </div>
 
-          <form class="dispatch-form" id="dispatchForm" novalidate>
+          <form class="contact-form" id="contactForm" novalidate>
             <div class="section-header" style="margin-bottom: 1.5rem;">
               <div>
-                <span class="section-index">Structured Inquiry Draft</span>
-                <h3 class="mission-panel-title">Prepare a Dispatch</h3>
+                <span class="section-index">Message Builder</span>
+                <h3 class="mission-panel-title">Send a Message</h3>
               </div>
             </div>
 
             <div class="form-grid">
               <div class="field">
-                <label for="senderName">Your Name or Organization</label>
-                <input type="text" id="senderName" name="senderName" placeholder="e.g., Jordan Vance / Community Coalition" required />
+                <label for="senderName">Your Name</label>
+                <input type="text" id="senderName" name="senderName" placeholder="Your name" required />
               </div>
 
               <div class="field">
-                <label for="senderEmail">Your Reply Email</label>
-                <input type="email" id="senderEmail" name="senderEmail" placeholder="name@example.org" required />
+                <label for="senderEmail">Your Email or Phone</label>
+                <input type="text" id="senderEmail" name="senderEmail" placeholder="you@example.com or 705-000-0000" required />
               </div>
 
               <div class="field full">
-                <label for="topicSelect">Primary Focus</label>
+                <label for="topicSelect">Topic</label>
                 <select id="topicSelect" name="topicSelect">
                   <option value="Child Safeguarding & Protection">Child Safeguarding & Protection</option>
                   <option value="Human Dignity & Fair Process">Human Dignity & Fair Process</option>
                   <option value="Institutional Accountability">Institutional Accountability</option>
                   <option value="Policy & Standards Reform">Policy & Standards Reform</option>
-                  <option value="Coalition / Speaking / General">Coalition / Speaking / General</option>
+                  <option value="General Inquiry">General Inquiry</option>
                 </select>
               </div>
 
               <div class="field full">
-                <label for="messageBody">Summary & Context</label>
-                <textarea id="messageBody" name="messageBody" placeholder="Share a concise, factual overview of the issue, timeline, or collaboration request..." required></textarea>
+                <label for="messageBody">Message</label>
+                <textarea id="messageBody" name="messageBody" placeholder="Write your message here..." required></textarea>
               </div>
             </div>
 
             <div class="form-footer">
               <div class="contact-actions">
-                <button type="submit" class="btn btn-primary">Launch Mail Draft</button>
-                <button type="button" class="btn" id="copyDraftBtn">Copy Formatted Draft</button>
+                <button type="submit" class="btn btn-primary">Open in Email App</button>
+                <button type="button" class="btn" id="copyMessageBtn">Copy Message</button>
               </div>
               <span class="form-status" id="formStatus" role="status" aria-live="polite">
-                Runs locally in your browser—no data is stored on this page.
+                Prepares a message addressed to ecode5934@gmail.com.
               </span>
             </div>
           </form>
@@ -1979,10 +1923,9 @@
         <div class="footer-inner">
           <span>Julian La Fortune // Human Rights & Child Advocate</span>
           <ul class="footer-links">
-            <li><a href="#mission">Mission</a></li>
-            <li><a href="#pillars">Pillars</a></li>
-            <li><a href="#methodology">Framework</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a></li>
+            <li><a href="tel:+17052575934">705-257-5934</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
           <span>© <span id="yearSpan">2026</span> All Rights Reserved</span>
         </div>
@@ -2001,8 +1944,9 @@
       <p class="modal-body" id="modalBody"></p>
       <ul class="modal-points" id="modalPoints"></ul>
       <div class="contact-actions">
-        <a href="#contact" class="btn btn-primary btn-sm" id="modalContactBtn">Discuss This Focus</a>
-        <button type="button" class="btn btn-sm" id="modalDoneBtn">Done</button>
+        <a href="#contact" class="btn btn-primary btn-sm" id="modalContactBtn">Contact Us</a>
+        <a href="mailto:ecode5934@gmail.com" class="btn btn-sm">Email</a>
+        <a href="tel:+17052575934" class="btn btn-sm">Call 705-257-5934</a>
       </div>
     </div>
   </div>
@@ -2016,78 +1960,77 @@
 
       document.documentElement.classList.add("js-ready");
 
-      const CONTACT_EMAIL = "advocacy@julianlafortune.org";
+      const CONTACT_EMAIL = "ecode5934@gmail.com";
+      const CONTACT_PHONE_DISPLAY = "705-257-5934";
 
       const PILLAR_DATA = {
         "child-safeguarding": {
           meta: "PILLAR 01 // CHILD RIGHTS",
           title: "Child Safeguarding & Protection",
-          body: "Protective systems work only when obligations are explicit, response times are clear, and vulnerable young people are never left navigating opaque bureaucracy alone.",
+          body: "Protective systems work when obligations are explicit, response times are clear, and vulnerable young people are supported by clear safeguards.",
           points: [
-            "Evaluate safeguarding policies for ambiguity, delays, and accountability gaps.",
-            "Clarify reporting pathways and protective escalation triggers.",
-            "Promote trauma-aware communication and child-centered decision criteria."
+            "Review safeguarding policies for ambiguity, gaps, and accountability.",
+            "Clarify reporting pathways and protective escalation steps.",
+            "Support child-centered standards and respectful communication."
           ]
         },
         "human-dignity": {
           meta: "PILLAR 02 // RIGHTS & JUSTICE",
           title: "Human Dignity & Fair Process",
-          body: "Fair process requires more than formal rules on paper—it demands clear notice, meaningful opportunity to be heard, and respectful treatment across every interaction.",
+          body: "Fair process requires clear notice, a fair opportunity to be heard, and respectful treatment across public and administrative settings.",
           points: [
-            "Audit administrative and institutional processes for fairness and clarity.",
-            "Identify where complex procedures quietly exclude or disadvantage people.",
-            "Advocate for transparent standards and reasoned explanations."
+            "Assess administrative and institutional processes for fairness and clarity.",
+            "Highlight procedural barriers that affect individuals and families.",
+            "Advocate for transparent standards and clear explanations."
           ]
         },
         "institutional-oversight": {
           meta: "PILLAR 03 // SYSTEMS & POLICY",
           title: "Institutional Accountability",
-          body: "When institutions review themselves without external rigor or public clarity, recurring issues persist. Structured documentation turns scattered observations into undeniable patterns.",
+          body: "Structured documentation helps connect individual experiences with broader policy patterns and concrete follow-through.",
           points: [
-            "Build clear timelines and factual issue summaries grounded in records.",
-            "Track whether stated commitments match day-to-day execution.",
-            "Press for concrete corrective measures rather than vague assurances."
+            "Organize timelines and factual summaries grounded in records.",
+            "Track whether stated policies match everyday practice.",
+            "Focus on verifiable corrective steps."
           ]
         },
         "youth-voice": {
           meta: "PILLAR 04 // CHILD RIGHTS",
           title: "Youth Voice & Participation",
-          body: "Young people affected by decisions deserve age-appropriate information and safe avenues to express views—without pressure, exposure, or performative framing.",
+          body: "Young people affected by decisions deserve age-appropriate information and safe, respectful channels to share their views.",
           points: [
-            "Establish ethical safeguards before seeking youth input or stories.",
-            "Ensure feedback channels are accessible, respectful, and non-retaliatory.",
-            "Close the loop so young participants see how their input was weighed."
+            "Keep safety and boundaries central when gathering youth input.",
+            "Use clear, accessible formats suited to young people.",
+            "Avoid tokenism and ensure thoughtful follow-up."
           ]
         },
         "policy-reform": {
           meta: "PILLAR 05 // SYSTEMS & POLICY",
           title: "Policy & Standards Reform",
-          body: "Good intent fails when policies are vague or disconnected from daily operations. Practical reform translates human rights principles into clear rules and checklists.",
+          body: "Practical reform translates human rights principles into clear rules, checklists, and review standards.",
           points: [
-            "Draft concrete policy revisions, governance norms, and review standards.",
-            "Align operational workflows with statutory and ethical duties.",
-            "Establish measurable review cycles so standards stay current."
+            "Draft clear policy notes, governance language, and review criteria.",
+            "Align daily procedures with protective duties.",
+            "Encourage regular reviews so standards stay practical."
           ]
         },
         "public-education": {
           meta: "PILLAR 06 // RIGHTS & JUSTICE",
           title: "Public Literacy & Advocacy",
-          body: "Clear, accurate public information empowers families, advocates, and communities to understand their rights, ask sharper questions, and act together effectively.",
+          body: "Clear, accurate information helps families, advocates, and communities understand rights and navigate processes.",
           points: [
-            "Break down complex policies and rights frameworks into plain language.",
-            "Equip partners and coalitions with reliable, well-structured briefs.",
-            "Encourage calm, disciplined, evidence-backed public advocacy."
+            "Translate complex rules and rights into plain language.",
+            "Share clear, well-organized briefs with allies and groups.",
+            "Support constructive, well-documented public advocacy."
           ]
         }
       };
 
-      // Dynamic copyright year
       const yearSpan = document.getElementById("yearSpan");
       if (yearSpan) {
         yearSpan.textContent = String(Math.max(2026, new Date().getFullYear()));
       }
 
-      // Toast helper
       const toastEl = document.getElementById("toast");
       let toastTimer = null;
       function showToast(message) {
@@ -2100,7 +2043,6 @@
         }, 2400);
       }
 
-      // Clipboard helper with fallback
       function copyText(text, successMsg) {
         if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
           navigator.clipboard.writeText(text).then(
@@ -2128,22 +2070,25 @@
           document.execCommand("copy");
           showToast(successMsg);
         } catch (_err) {
-          showToast("Copy unavailable — use " + text);
+          showToast("Copy unavailable — " + text);
         }
         document.body.removeChild(ta);
       }
 
-      // Email copy buttons
-      ["copyEmailTopBtn", "copyEmailDrawerBtn", "copyEmailMainBtn"].forEach(function (id) {
-        const btn = document.getElementById(id);
-        if (btn) {
-          btn.addEventListener("click", function () {
-            copyText(CONTACT_EMAIL, "Email copied: " + CONTACT_EMAIL);
-          });
-        }
-      });
+      const copyEmailBtn = document.getElementById("copyEmailBtn");
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener("click", function () {
+          copyText(CONTACT_EMAIL, "Copied: " + CONTACT_EMAIL);
+        });
+      }
 
-      // Mobile menu drawer
+      const copyPhoneBtn = document.getElementById("copyPhoneBtn");
+      if (copyPhoneBtn) {
+        copyPhoneBtn.addEventListener("click", function () {
+          copyText(CONTACT_PHONE_DISPLAY, "Copied: " + CONTACT_PHONE_DISPLAY);
+        });
+      }
+
       const mobileMenuBtn = document.getElementById("mobileMenuBtn");
       const mobileDrawer = document.getElementById("mobileDrawer");
 
@@ -2156,8 +2101,7 @@
 
       if (mobileMenuBtn && mobileDrawer) {
         mobileMenuBtn.addEventListener("click", function () {
-          const isOpen = mobileDrawer.classList.contains("open");
-          setDrawerState(!isOpen);
+          setDrawerState(!mobileDrawer.classList.contains("open"));
         });
 
         document.querySelectorAll(".drawer-link").forEach(function (link) {
@@ -2173,7 +2117,6 @@
         });
       }
 
-      // Pillar filter buttons
       const filterBtns = document.querySelectorAll(".filter-btn");
       const pillarCards = document.querySelectorAll(".pillar-card");
 
@@ -2193,7 +2136,6 @@
         });
       });
 
-      // Subtle pointer glow on pillar cards
       pillarCards.forEach(function (card) {
         card.addEventListener("pointermove", function (e) {
           const rect = card.getBoundingClientRect();
@@ -2204,14 +2146,12 @@
         });
       });
 
-      // Pillar Modal logic
       const modalBackdrop = document.getElementById("pillarModal");
       const modalMeta = document.getElementById("modalMeta");
       const modalTitle = document.getElementById("modalTitle");
       const modalBody = document.getElementById("modalBody");
       const modalPoints = document.getElementById("modalPoints");
       const closeModalBtn = document.getElementById("closeModalBtn");
-      const modalDoneBtn = document.getElementById("modalDoneBtn");
       const modalContactBtn = document.getElementById("modalContactBtn");
       let lastFocusedElement = null;
 
@@ -2258,7 +2198,6 @@
       });
 
       if (closeModalBtn) closeModalBtn.addEventListener("click", closePillarModal);
-      if (modalDoneBtn) modalDoneBtn.addEventListener("click", closePillarModal);
       if (modalContactBtn) {
         modalContactBtn.addEventListener("click", function () {
           closePillarModal();
@@ -2279,7 +2218,6 @@
         }
       });
 
-      // Scroll reveal with safe fallback so nothing ever stays stuck hidden
       const revealEls = document.querySelectorAll(".reveal");
       function revealAll() {
         revealEls.forEach(function (el) {
@@ -2309,7 +2247,6 @@
           }
         });
 
-        // Safety net in case user jumps straight to an anchor
         window.addEventListener("scroll", function () {
           revealEls.forEach(function (el) {
             if (!el.classList.contains("is-visible")) {
@@ -2324,71 +2261,70 @@
         revealAll();
       }
 
-      // Inquiry / Dispatch helper
-      const dispatchForm = document.getElementById("dispatchForm");
+      const contactForm = document.getElementById("contactForm");
       const formStatus = document.getElementById("formStatus");
-      const copyDraftBtn = document.getElementById("copyDraftBtn");
+      const copyMessageBtn = document.getElementById("copyMessageBtn");
 
-      function buildDraftText() {
+      function buildMessageText() {
         const nameVal = (document.getElementById("senderName").value || "").trim();
-        const emailVal = (document.getElementById("senderEmail").value || "").trim();
+        const contactVal = (document.getElementById("senderEmail").value || "").trim();
         const topicVal = (document.getElementById("topicSelect").value || "").trim();
         const bodyVal = (document.getElementById("messageBody").value || "").trim();
 
         return [
           "To: " + CONTACT_EMAIL,
-          "From: " + (nameVal || "[Name / Organization]") + (emailVal ? " <" + emailVal + ">" : ""),
-          "Focus: " + topicVal,
+          "Name: " + (nameVal || "[Your Name]"),
+          "Reply Contact: " + (contactVal || "[Email or Phone]"),
+          "Topic: " + topicVal,
           "",
-          bodyVal || "[Summary & Context]"
+          bodyVal || "[Message]"
         ].join("\n");
       }
 
       function validateForm() {
         const nameVal = (document.getElementById("senderName").value || "").trim();
-        const emailVal = (document.getElementById("senderEmail").value || "").trim();
+        const contactVal = (document.getElementById("senderEmail").value || "").trim();
         const bodyVal = (document.getElementById("messageBody").value || "").trim();
 
         if (!nameVal) {
-          formStatus.textContent = "Please enter your name or organization.";
+          formStatus.textContent = "Please enter your name.";
           return false;
         }
-        if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-          formStatus.textContent = "Please enter a valid reply email address.";
+        if (!contactVal) {
+          formStatus.textContent = "Please enter a reply email or phone number.";
           return false;
         }
         if (!bodyVal) {
-          formStatus.textContent = "Please enter a brief summary before preparing your draft.";
+          formStatus.textContent = "Please enter a message.";
           return false;
         }
         return true;
       }
 
-      if (dispatchForm) {
-        dispatchForm.addEventListener("submit", function (e) {
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
           e.preventDefault();
           if (!validateForm()) return;
 
           const nameVal = document.getElementById("senderName").value.trim();
-          const emailVal = document.getElementById("senderEmail").value.trim();
+          const contactVal = document.getElementById("senderEmail").value.trim();
           const topicVal = document.getElementById("topicSelect").value.trim();
           const bodyVal = document.getElementById("messageBody").value.trim();
 
-          const subject = encodeURIComponent("Advocacy Inquiry // " + topicVal);
+          const subject = encodeURIComponent("Contact Us // " + topicVal);
           const mailBody = encodeURIComponent(
-            "From: " + nameVal + " (" + emailVal + ")\nFocus: " + topicVal + "\n\n" + bodyVal
+            "Name: " + nameVal + "\nReply Contact: " + contactVal + "\nTopic: " + topicVal + "\n\n" + bodyVal
           );
 
-          formStatus.textContent = "Opening your default mail client with pre-filled details...";
+          formStatus.textContent = "Opening your email client...";
           window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + mailBody;
         });
       }
 
-      if (copyDraftBtn) {
-        copyDraftBtn.addEventListener("click", function () {
-          const text = buildDraftText();
-          copyText(text, "Formatted inquiry draft copied");
-          formStatus.textContent = "Draft copied to clipboard.";
+      if (copyMessageBtn) {
+        copyMessageBtn.addEventListener("click", function () {
+          copyText(buildMessageText(), "Message copied");
+          formStatus.textContent = "Message copied to clipboard.";
         });
       }
     })();
