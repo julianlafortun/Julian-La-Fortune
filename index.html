@@ -1,2333 +1,755 @@
 <!DOCTYPE html>
 <html lang="en" id="top">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Julian La Fortune — Human Rights & Child Advocate." />
-  <title>Julian La Fortune — Human Rights & Child Advocate</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #050505;
-      --surface: #0b0b0b;
-      --surface-elevated: #111111;
-      --text: #ffffff;
-      --text-secondary: #bcbcbc;
-      --text-muted: #828282;
-      --border: rgba(255, 255, 255, 0.14);
-      --border-strong: rgba(255, 255, 255, 0.28);
-      --accent-bg: #ffffff;
-      --accent-text: #050505;
-      --focus-ring: #ffffff;
-      --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-serif: "Instrument Serif", Georgia, serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      --radius-pill: 999px;
-      --radius-sm: 2px;
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 5.5rem;
-      background-color: var(--bg);
-      color: var(--text);
-      font-size: 16px;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-display);
-      line-height: 1.65;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      position: relative;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--focus-ring);
-      outline-offset: 3px;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 1rem;
-      z-index: 100;
-      background: var(--accent-bg);
-      color: var(--accent-text);
-      padding: 0.65rem 1.1rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      transition: top 0.18s ease;
-    }
-
-    .skip-link:focus {
-      top: 1rem;
-    }
-
-    /* Subtle monochrome architectural grid + grain */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
-    }
-
-    .bg-grain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.035;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.9) 0.6px, transparent 0.6px);
-      background-size: 3px 3px;
-    }
-
-    .page-shell {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1 0 auto;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Top Navigation Bar */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      width: 100%;
-      background: rgba(5, 5, 5, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .topbar-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0.95rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-      color: var(--text);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .brand-mark-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--text);
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.25rem 0;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s ease, border-color 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      border-bottom-color: var(--text);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-shrink: 0;
-    }
-
-    .mobile-toggle {
-      display: none;
-      background: transparent;
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.55rem 0.9rem;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-    }
-
-    .mobile-drawer {
-      display: none;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 1.25rem 2rem 1.75rem;
-    }
-
-    .mobile-drawer.open {
-      display: block;
-    }
-
-    .mobile-drawer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .mobile-drawer-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: block;
-      padding: 0.25rem 0;
-    }
-
-    .mobile-drawer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.68rem 1.2rem;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid var(--border-strong);
-      background: transparent;
-      color: var(--text);
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-      white-space: nowrap;
-      line-height: 1;
-    }
-
-    .btn:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: var(--text);
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-    }
-
-    .btn-primary {
-      background: var(--accent-bg);
-      color: var(--accent-text);
-      border-color: var(--accent-bg);
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      background: #e6e6e6;
-      border-color: #e6e6e6;
-      color: var(--accent-text);
-    }
-
-    .btn-sm {
-      padding: 0.52rem 0.95rem;
-      font-size: 0.69rem;
-    }
-
-    /* Kinetic Ticker Banner */
-    .ticker {
-      width: 100%;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: tickerScroll 34s linear infinite;
-      will-change: transform;
-    }
-
-    .ticker:hover .ticker-track,
-    .ticker:focus-within .ticker-track {
-      animation-play-state: paused;
-    }
-
-    .ticker-group {
-      display: flex;
-      align-items: center;
-      gap: 2.25rem;
-      padding: 0.68rem 1.125rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      white-space: nowrap;
-    }
-
-    .ticker-sep {
-      color: var(--text-muted);
-    }
-
-    @keyframes tickerScroll {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 4.5rem 0 4rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.85fr);
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .eyebrow-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-    }
-
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--text);
-      display: inline-block;
-    }
-
-    .hero-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(3.1rem, 7.2vw, 6.1rem);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-name-line {
-      display: block;
-    }
-
-    .hero-role {
-      font-size: clamp(1.12rem, 2vw, 1.45rem);
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: -0.01em;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-mission {
-      font-size: 1.04rem;
-      line-height: 1.75;
-      color: var(--text-secondary);
-      max-width: 65ch;
-      margin-bottom: 1rem;
-    }
-
-    .hero-mission + .hero-mission {
-      margin-bottom: 2.1rem;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-    }
-
-    /* Profile Snapshot Card */
-    .snapshot-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .snapshot-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-    }
-
-    .snapshot-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      padding-bottom: 0.95rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .snapshot-item:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .snapshot-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .snapshot-value {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .snapshot-value a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-strong);
-      padding-bottom: 1px;
-    }
-
-    .snapshot-value a:hover {
-      border-bottom-color: var(--text);
-    }
-
-    /* Sections */
-    .section {
-      padding: 4.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-index {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.55rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: clamp(1.9rem, 3.8vw, 3rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-      color: var(--text);
-    }
-
-    .section-lead {
-      max-width: 68ch;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.72;
-      margin-bottom: 2.25rem;
-    }
-
-    /* Mission Two-Column Breakdown */
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .mission-panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .mission-panel-tag {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .mission-panel-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .mission-panel p {
-      color: var(--text-secondary);
-      font-size: 0.96rem;
-      line-height: 1.7;
-    }
-
-    /* Filter Bar */
-    .filter-bar {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      padding: 0.3rem;
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .filter-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.5rem 0.9rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      color: var(--text);
-    }
-
-    .filter-btn.active {
-      background: var(--accent-bg);
-      color: var(--accent-text);
-      font-weight: 600;
-    }
-
-    /* Pillars Grid */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.25rem;
-    }
-
-    .pillar-card {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-      cursor: pointer;
-      transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .pillar-card.is-hidden {
-      display: none;
-    }
-
-    .pillar-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(
-        420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.08),
-        transparent 65%
-      );
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .pillar-card:hover,
-    .pillar-card:focus-within {
-      border-color: var(--border-strong);
-      background: var(--surface-elevated);
-      transform: translateY(-3px);
-    }
-
-    .pillar-card:hover::before {
-      opacity: 1;
-    }
-
-    .pillar-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .pillar-title {
-      font-size: 1.32rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-top: 0.85rem;
-      margin-bottom: 0.65rem;
-    }
-
-    .pillar-summary {
-      font-size: 0.94rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    .pillar-deliverables {
-      margin-top: 1rem;
-      padding-left: 1.1rem;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.55;
-    }
-
-    .pillar-deliverables li + li {
-      margin-top: 0.3rem;
-    }
-
-    .pillar-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    /* Methodology & Table Section */
-    .methodology-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .step-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .step-num {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .step-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.015em;
-    }
-
-    .step-desc {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.62;
-    }
-
-    .data-table-wrap {
-      width: 100%;
-      overflow-x: auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    table.ledger-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      min-width: 680px;
-    }
-
-    .ledger-table th,
-    .ledger-table td {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      vertical-align: top;
-    }
-
-    .ledger-table th {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      background: var(--surface-elevated);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .ledger-table td {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    .ledger-table td strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .ledger-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* Legal & Recognition Section */
-    .recognition-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: 2rem;
-      align-items: stretch;
-    }
-
-    .plaque {
-      background: var(--surface);
-      border: 1px solid var(--border-strong);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.75rem;
-    }
-
-    .plaque-source {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .plaque-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.65rem, 3vw, 2.35rem);
-      line-height: 1.25;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    .plaque-attribution {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .plaque-judge {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .plaque-detail {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-    }
-
-    .affiliations-panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .affiliation-card {
-      padding-bottom: 1.35rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .affiliation-card:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .affiliation-tag {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .affiliation-name {
-      font-size: 1.18rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-    }
-
-    .affiliation-desc {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* FAQ / Protocols */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .faq-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 1.25rem 1.5rem;
-      font-weight: 600;
-      font-size: 1.02rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-item summary::after {
-      content: "+";
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    .faq-item[open] summary::after {
-      content: "−";
-    }
-
-    .faq-answer {
-      padding: 0 1.5rem 1.35rem;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      padding-top: 1rem;
-    }
-
-    .faq-answer a {
-      color: var(--text);
-      border-bottom: 1px solid var(--border-strong);
-      text-decoration: none;
-    }
-
-    /* Contact Us Section */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .contact-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .contact-value {
-      font-size: clamp(1.25rem, 2.2vw, 1.75rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    .contact-value a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-strong);
-      padding-bottom: 2px;
-    }
-
-    .contact-value a:hover {
-      border-bottom-color: var(--text);
-    }
-
-    .contact-note {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .contact-form {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.15rem;
-      margin-bottom: 1.15rem;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: 0.96rem;
-      padding: 0.75rem 0.9rem;
-      border-radius: var(--radius-sm);
-    }
-
-    .field textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .form-footer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-
-    .form-status {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-    }
-
-    /* Footer */
-    .footer {
-      padding: 2.25rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      background: var(--bg);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    /* Scroll reveal — safe by default so content never remains stuck invisible */
-    .reveal {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
-    }
-
-    .js-ready .reveal:not(.is-visible) {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      .ticker-track {
-        animation: none;
-      }
-      .reveal,
-      .js-ready .reveal:not(.is-visible) {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-dialog {
-      width: 100%;
-      max-width: 640px;
-      max-height: 88vh;
-      overflow-y: auto;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border-strong);
-      padding: 2rem;
-      color: var(--text);
-    }
-
-    .modal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 1.25rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .modal-close {
-      background: transparent;
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      padding: 0.38rem 0.75rem;
-      cursor: pointer;
-    }
-
-    .modal-close:hover {
-      border-color: var(--text);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .modal-title {
-      font-size: 1.65rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.85rem;
-    }
-
-    .modal-body {
-      font-size: 0.98rem;
-      line-height: 1.72;
-      color: var(--text-secondary);
-      margin-bottom: 1.25rem;
-    }
-
-    .modal-points {
-      padding-left: 1.25rem;
-      color: var(--text);
-      font-size: 0.94rem;
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-points li + li {
-      margin-top: 0.45rem;
-    }
-
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 70;
-      background: var(--accent-bg);
-      color: var(--accent-text);
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.78rem 1.2rem;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 1080px) {
-      .methodology-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .pillars-grid,
-      .recognition-layout,
-      .contact-grid,
-      .mission-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links,
-      .nav-actions {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container,
-      .topbar-inner,
-      .mobile-drawer {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-      }
-
-      .hero {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-
-      .methodology-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 3.4rem 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-grain" aria-hidden="true"></div>
-
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a href="#top" class="brand-mark">
-          <span class="brand-mark-dot" aria-hidden="true"></span>
-          <span>JULIAN LA FORTUNE // ADVOCACY</span>
-        </a>
-
-        <nav aria-label="Primary Navigation">
-          <ul class="nav-links">
-            <li><a href="#mission">Mission</a></li>
-            <li><a href="#pillars">Pillars</a></li>
-            <li><a href="#methodology">Framework</a></li>
-            <li><a href="#recognition">Recognition</a></li>
-            <li><a href="#affiliations">Affiliations</a></li>
-            <li><a href="#faq">Protocols</a></li>
-          </ul>
-        </nav>
-
-        <div class="nav-actions">
-          <a href="tel:+17052575934" class="btn btn-sm">705-257-5934</a>
-          <a href="#contact" class="btn btn-primary btn-sm">Contact Us</a>
-        </div>
-
-        <button
-          type="button"
-          class="mobile-toggle"
-          id="mobileMenuBtn"
-          aria-expanded="false"
-          aria-controls="mobileDrawer"
-        >
-          Menu
-        </button>
-      </div>
-
-      <div class="mobile-drawer" id="mobileDrawer">
-        <ul class="mobile-drawer-links">
-          <li><a href="#mission" class="drawer-link">Mission</a></li>
-          <li><a href="#pillars" class="drawer-link">Pillars</a></li>
-          <li><a href="#methodology" class="drawer-link">Framework</a></li>
-          <li><a href="#recognition" class="drawer-link">Recognition</a></li>
-          <li><a href="#affiliations" class="drawer-link">Affiliations</a></li>
-          <li><a href="#faq" class="drawer-link">Protocols</a></li>
-          <li><a href="#contact" class="drawer-link">Contact Us</a></li>
-        </ul>
-        <div class="mobile-drawer-actions">
-          <a href="mailto:ecode5934@gmail.com" class="btn btn-sm">Email</a>
-          <a href="tel:+17052575934" class="btn btn-sm">Call 705-257-5934</a>
-          <a href="#contact" class="btn btn-primary btn-sm drawer-link">Contact Us</a>
-        </div>
-      </div>
-    </header>
-
-    <div class="ticker" role="region" aria-label="Advocacy Highlights Ticker">
-      <div class="ticker-track">
-        <div class="ticker-group">
-          <span>Human Rights & Child Protection</span>
-          <span class="ticker-sep" aria-hidden="true">//</span>
-          <span>Institutional Accountability</span>
-          <span class="ticker-sep" aria-hidden="true">//</span>
-          <span>Safeguarding Standards & Policy Reform</span>
-          <span class="ticker-sep" aria-hidden="true">//</span>
-          <span>Dignity, Due Process & Equity</span>
-          <span class="ticker-sep" aria-hidden="true">//</span>
-          <span>Public Interest Documentation</span>
-        </div>
-        <div class="ticker-group" aria-hidden="true">
-          <span>Human Rights & Child Protection</span>
-          <span class="ticker-sep">//</span>
-          <span>Institutional Accountability</span>
-          <span class="ticker-sep">//</span>
-          <span>Safeguarding Standards & Policy Reform</span>
-          <span class="ticker-sep">//</span>
-          <span>Dignity, Due Process & Equity</span>
-          <span class="ticker-sep">//</span>
-          <span>Public Interest Documentation</span>
-        </div>
-      </div>
-    </div>
-
-    <main id="main-content">
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div>
-              <div class="eyebrow-row">
-                <span>Public Interest & Safeguarding</span>
-                <span class="status-indicator">
-                  <span class="status-dot" aria-hidden="true"></span>
-                  <span>Human Rights & Child Advocacy</span>
-                </span>
-              </div>
-
-              <h1 class="hero-name">
-                <span class="hero-name-line">Julian</span>
-                <span class="hero-name-line">La Fortune</span>
-              </h1>
-
-              <p class="hero-role">Human Rights & Child Advocate</p>
-
-              <p class="hero-mission">
-                Advancing child protection, procedural fairness, and human dignity where vulnerable individuals
-                intersect with complex institutions. Work centers on documented advocacy, systemic oversight,
-                and clear public accountability.
-              </p>
-
-              <p class="hero-mission">
-                Every inquiry, review, and reform brief is approached with disciplined evidence gathering,
-                respect for lived experience, and a commitment to measurable institutional change.
-              </p>
-
-              <div class="hero-cta-group">
-                <a href="#pillars" class="btn btn-primary">Explore Advocacy Pillars</a>
-                <a href="#methodology" class="btn">View Framework</a>
-                <a href="#contact" class="btn">Contact Us</a>
-              </div>
-            </div>
-
-            <aside class="snapshot-card" aria-label="Contact & Overview">
-              <div class="snapshot-header">
-                <span>Contact Us</span>
-                <span>DIRECT</span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Role</span>
-                <span class="snapshot-value">Human Rights & Child Advocate</span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Email</span>
-                <span class="snapshot-value">
-                  <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a>
-                </span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Phone</span>
-                <span class="snapshot-value">
-                  <a href="tel:+17052575934">705-257-5934</a>
-                </span>
-              </div>
-
-              <div class="snapshot-item">
-                <span class="snapshot-label">Quick Actions</span>
-                <div class="contact-actions" style="margin-top: 0.35rem;">
-                  <a href="mailto:ecode5934@gmail.com" class="btn btn-primary btn-sm">Send Email</a>
-                  <a href="tel:+17052575934" class="btn btn-sm">Call Now</a>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <!-- Mission Section -->
-      <section id="mission" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">01 // Mission & Mandate</span>
-              <h2 class="section-title">Protecting Children & Upholding Rights</h2>
-            </div>
-          </div>
-
-          <p class="section-lead">
-            Institutional failures compound when oversight is opaque, language obscures accountability, or
-            children and families lack clear channels to be heard. This work connects frontline realities
-            with clear documentation and practical reform.
-          </p>
-
-          <div class="mission-grid">
-            <article class="mission-panel">
-              <span class="mission-panel-tag">Principle 01 // Child-Centered Priority</span>
-              <h3 class="mission-panel-title">Best Interests & Safeguarding</h3>
-              <p>
-                Children and youth require clear safeguards, respectful communication, and structures
-                that prioritize safety, stability, and wellbeing.
-              </p>
-            </article>
-
-            <article class="mission-panel">
-              <span class="mission-panel-tag">Principle 02 // Institutional Clarity</span>
-              <h3 class="mission-panel-title">Accountability & Reform</h3>
-              <p>
-                Sustained change requires mapping exact decision points, identifying where rights protections
-                break down, and proposing concrete operational fixes.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Pillars Section -->
-      <section id="pillars" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">02 // Core Pillars</span>
-              <h2 class="section-title">Areas of Advocacy & Focus</h2>
-            </div>
-
-            <div class="filter-bar" role="group" aria-label="Filter advocacy pillars by focus area">
-              <button type="button" class="filter-btn active" data-filter="all">All (6)</button>
-              <button type="button" class="filter-btn" data-filter="child">Child Rights</button>
-              <button type="button" class="filter-btn" data-filter="justice">Rights & Justice</button>
-              <button type="button" class="filter-btn" data-filter="systems">Systems & Policy</button>
-            </div>
-          </div>
-
-          <div class="pillars-grid" id="pillarsGrid">
-            <article class="pillar-card" data-category="child" data-pillar="child-safeguarding" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 01</span>
-                  <span>Child Rights</span>
-                </div>
-                <h3 class="pillar-title">Child Safeguarding & Protection</h3>
-                <p class="pillar-summary">
-                  Strengthening protective boundaries, duty-of-care standards, and timely intervention pathways
-                  where children and young people face risk or neglect.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Safeguarding policy & gap reviews</li>
-                  <li>Clear reporting and escalation pathways</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-
-            <article class="pillar-card" data-category="justice" data-pillar="human-dignity" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 02</span>
-                  <span>Rights & Justice</span>
-                </div>
-                <h3 class="pillar-title">Human Dignity & Fair Process</h3>
-                <p class="pillar-summary">
-                  Defending procedural fairness, transparent decision-making, and equitable treatment across
-                  public and administrative systems.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Due-process and fairness assessments</li>
-                  <li>Accessible plain-language guidance</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-
-            <article class="pillar-card" data-category="systems" data-pillar="institutional-oversight" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 03</span>
-                  <span>Systems & Policy</span>
-                </div>
-                <h3 class="pillar-title">Institutional Accountability</h3>
-                <p class="pillar-summary">
-                  Examining how policies operate in practice, documenting systemic blind spots, and pressing
-                  for verifiable corrective action.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Chronological issue & record synthesis</li>
-                  <li>Accountability benchmarks and follow-ups</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-
-            <article class="pillar-card" data-category="child" data-pillar="youth-voice" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 04</span>
-                  <span>Child Rights</span>
-                </div>
-                <h3 class="pillar-title">Youth Voice & Participation</h3>
-                <p class="pillar-summary">
-                  Ensuring young people's perspectives are heard safely and meaningfully without tokenism or
-                  retaliation.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Ethical consultation protocols</li>
-                  <li>Age-appropriate feedback mechanisms</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-
-            <article class="pillar-card" data-category="systems" data-pillar="policy-reform" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 05</span>
-                  <span>Systems & Policy</span>
-                </div>
-                <h3 class="pillar-title">Policy & Standards Reform</h3>
-                <p class="pillar-summary">
-                  Translating real-world friction points into clear policy language, operational checklists, and
-                  enforceable governance standards.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Policy redlines and governance briefs</li>
-                  <li>Implementation readiness reviews</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-
-            <article class="pillar-card" data-category="justice" data-pillar="public-education" tabindex="0">
-              <div>
-                <div class="pillar-meta">
-                  <span>Pillar 06</span>
-                  <span>Rights & Justice</span>
-                </div>
-                <h3 class="pillar-title">Public Literacy & Advocacy</h3>
-                <p class="pillar-summary">
-                  Equipping communities, families, and allies with accurate information on rights, remedies,
-                  and constructive advocacy channels.
-                </p>
-                <ul class="pillar-deliverables">
-                  <li>Public explainers and resource briefs</li>
-                  <li>Coalition briefings and workshops</li>
-                </ul>
-              </div>
-              <div class="pillar-footer">
-                <span>Read Brief</span>
-                <span aria-hidden="true">-></span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Methodology & Work Ledger -->
-      <section id="methodology" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">03 // Framework & Workstreams</span>
-              <h2 class="section-title">How Work Moves From Intake to Action</h2>
-            </div>
-          </div>
-
-          <div class="methodology-grid">
-            <div class="step-card">
-              <span class="step-num">Stage 01 // Intake</span>
-              <h3 class="step-title">Scope & Boundary Check</h3>
-              <p class="step-desc">
-                Clarify objectives, urgency, confidentiality limits, and alignment with core advocacy priorities.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-num">Stage 02 // Audit</span>
-              <h3 class="step-title">Evidence & Timeline Mapping</h3>
-              <p class="step-desc">
-                Organize facts, policies, dates, and institutional touchpoints into a coherent, verifiable record.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-num">Stage 03 // Strategy</span>
-              <h3 class="step-title">Targeted Recommendations</h3>
-              <p class="step-desc">
-                Identify concrete safeguards, policy adjustments, or escalation paths grounded in rights and practicality.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-num">Stage 04 // Follow-Through</span>
-              <h3 class="step-title">Review & Accountability</h3>
-              <p class="step-desc">
-                Track commitments, revisit outcomes, and refine documentation so improvements hold over time.
-              </p>
-            </div>
-          </div>
-
-          <div class="data-table-wrap">
-            <table class="ledger-table">
-              <thead>
-                <tr>
-                  <th scope="col">Workstream</th>
-                  <th scope="col">Primary Focus</th>
-                  <th scope="col">Core Deliverable</th>
-                  <th scope="col">Standard</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Child Safeguarding Reviews</strong></td>
-                  <td>Protective protocols & youth safety</td>
-                  <td>Structured risk & policy gap briefs</td>
-                  <td>Child-first, clear boundaries</td>
-                </tr>
-                <tr>
-                  <td><strong>Institutional Oversight</strong></td>
-                  <td>Administrative fairness & compliance</td>
-                  <td>Chronologies & accountability notes</td>
-                  <td>Factual precision & restraint</td>
-                </tr>
-                <tr>
-                  <td><strong>Coalition & Policy Briefs</strong></td>
-                  <td>Systemic reform & public dialogue</td>
-                  <td>Actionable briefs & talking points</td>
-                  <td>Accessible, rigorous, practical</td>
-                </tr>
-                <tr>
-                  <td><strong>Community & Family Guidance</strong></td>
-                  <td>Navigating processes & rights literacy</td>
-                  <td>Plain-language checklists & referrals</td>
-                  <td>Respectful, transparent scope</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- Legal & Recognition Section -->
-      <section id="recognition" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">04 // Legal & Recognition</span>
-              <h2 class="section-title">Public Record & Recognition</h2>
-            </div>
-          </div>
-
-          <div class="recognition-layout">
-            <article class="plaque">
-              <div class="plaque-source">Public Record Highlight</div>
-              <blockquote class="plaque-quote">
-                "Advocacy grounded in principle, persistence, and care for human dignity leaves a lasting
-                mark on the institutions and communities it challenges to do better."
-              </blockquote>
-              <div class="plaque-attribution">
-                <span class="plaque-judge">Julian La Fortune — Human Rights & Child Advocate</span>
-                <span class="plaque-detail">Commitment to child protection, due process & accountability</span>
-              </div>
-            </article>
-
-            <div class="affiliations-panel" id="affiliations">
-              <div class="affiliation-card">
-                <span class="affiliation-tag">Focus // Child Welfare</span>
-                <h3 class="affiliation-name">Child Rights & Safeguarding Standards</h3>
-                <p class="affiliation-desc">
-                  Focused on ensuring protective systems operate transparently, responsively, and with the
-                  wellbeing of children at the center.
-                </p>
-              </div>
-
-              <div class="affiliation-card">
-                <span class="affiliation-tag">Focus // Civil & Human Rights</span>
-                <h3 class="affiliation-name">Dignity, Equity & Accountability</h3>
-                <p class="affiliation-desc">
-                  Advocating for clear remedies, fair treatment, and institutional responsibility when rights
-                  are tested or overlooked.
-                </p>
-              </div>
-
-              <div class="affiliation-card">
-                <span class="affiliation-tag">Focus // Collaborative Action</span>
-                <h3 class="affiliation-name">Coalitions, Advocates & Allies</h3>
-                <p class="affiliation-desc">
-                  Working alongside principled partners, community voices, and reformers committed to durable
-                  structural improvement.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Protocols / FAQ -->
-      <section id="faq" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">05 // Protocols & Boundaries</span>
-              <h2 class="section-title">Before You Contact Us</h2>
-            </div>
-          </div>
-
-          <div class="faq-list">
-            <details class="faq-item">
-              <summary>Is this site a substitute for legal counsel or emergency services?</summary>
-              <div class="faq-answer">
-                No. Advocacy and policy work shared here do not constitute formal legal representation. If
-                someone is in immediate physical danger or acute crisis, contact local emergency services or
-                designated child protection / crisis hotlines immediately.
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary>How can we reach you directly?</summary>
-              <div class="faq-answer">
-                You can email <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a> or call
-                <a href="tel:+17052575934">705-257-5934</a>. For detailed written summaries or documents,
-                email is typically easiest to reference.
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary>What details are most helpful in an initial message?</summary>
-              <div class="faq-answer">
-                Share a concise, factual summary of what happened, relevant dates, the institutions or
-                policies involved, and what kind of support, collaboration, or information you are looking for.
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Us Section -->
-      <section id="contact" class="section reveal">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <span class="section-index">06 // Contact Us</span>
-              <h2 class="section-title">Contact Us</h2>
-            </div>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-box">
-              <div>
-                <span class="contact-label">Email</span>
-                <div class="contact-value">
-                  <a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a>
-                </div>
-                <p class="contact-note">
-                  Click the email address or button below to open your mail app.
-                </p>
-              </div>
-              <div class="contact-actions">
-                <a href="mailto:ecode5934@gmail.com" class="btn btn-primary">Email ecode5934@gmail.com</a>
-                <button type="button" class="btn" id="copyEmailBtn">Copy Email</button>
-              </div>
-            </div>
-
-            <div class="contact-box">
-              <div>
-                <span class="contact-label">Phone</span>
-                <div class="contact-value">
-                  <a href="tel:+17052575934">705-257-5934</a>
-                </div>
-                <p class="contact-note">
-                  Click the phone number or button below to place a call from a phone or dialer app.
-                </p>
-              </div>
-              <div class="contact-actions">
-                <a href="tel:+17052575934" class="btn btn-primary">Call 705-257-5934</a>
-                <button type="button" class="btn" id="copyPhoneBtn">Copy Number</button>
-              </div>
-            </div>
-          </div>
-
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="section-header" style="margin-bottom: 1.5rem;">
-              <div>
-                <span class="section-index">Message Builder</span>
-                <h3 class="mission-panel-title">Send a Message</h3>
-              </div>
-            </div>
-
-            <div class="form-grid">
-              <div class="field">
-                <label for="senderName">Your Name</label>
-                <input type="text" id="senderName" name="senderName" placeholder="Your name" required />
-              </div>
-
-              <div class="field">
-                <label for="senderEmail">Your Email or Phone</label>
-                <input type="text" id="senderEmail" name="senderEmail" placeholder="you@example.com or 705-000-0000" required />
-              </div>
-
-              <div class="field full">
-                <label for="topicSelect">Topic</label>
-                <select id="topicSelect" name="topicSelect">
-                  <option value="Child Safeguarding & Protection">Child Safeguarding & Protection</option>
-                  <option value="Human Dignity & Fair Process">Human Dignity & Fair Process</option>
-                  <option value="Institutional Accountability">Institutional Accountability</option>
-                  <option value="Policy & Standards Reform">Policy & Standards Reform</option>
-                  <option value="General Inquiry">General Inquiry</option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="messageBody">Message</label>
-                <textarea id="messageBody" name="messageBody" placeholder="Write your message here..." required></textarea>
-              </div>
-            </div>
-
-            <div class="form-footer">
-              <div class="contact-actions">
-                <button type="submit" class="btn btn-primary">Open in Email App</button>
-                <button type="button" class="btn" id="copyMessageBtn">Copy Message</button>
-              </div>
-              <span class="form-status" id="formStatus" role="status" aria-live="polite">
-                Prepares a message addressed to ecode5934@gmail.com.
-              </span>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-inner">
-          <span>Julian La Fortune // Human Rights & Child Advocate</span>
-          <ul class="footer-links">
-            <li><a href="mailto:ecode5934@gmail.com">ecode5934@gmail.com</a></li>
-            <li><a href="tel:+17052575934">705-257-5934</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-          </ul>
-          <span>© <span id="yearSpan">2026</span> All Rights Reserved</span>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Pillar Detail Modal -->
-  <div class="modal-backdrop" id="pillarModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-dialog">
-      <div class="modal-top">
-        <span id="modalMeta">PILLAR BRIEF</span>
-        <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close modal">Close [ESC]</button>
-      </div>
-      <h3 class="modal-title" id="modalTitle">Pillar Title</h3>
-      <p class="modal-body" id="modalBody"></p>
-      <ul class="modal-points" id="modalPoints"></ul>
-      <div class="contact-actions">
-        <a href="#contact" class="btn btn-primary btn-sm" id="modalContactBtn">Contact Us</a>
-        <a href="mailto:ecode5934@gmail.com" class="btn btn-sm">Email</a>
-        <a href="tel:+17052575934" class="btn btn-sm">Call 705-257-5934</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div class="toast" id="toast" role="status" aria-live="polite">Copied to clipboard</div>
-
-  <script>
-    (function () {
-      "use strict";
-
-      document.documentElement.classList.add("js-ready");
-
-      const CONTACT_EMAIL = "ecode5934@gmail.com";
-      const CONTACT_PHONE_DISPLAY = "705-257-5934";
-
-      const PILLAR_DATA = {
-        "child-safeguarding": {
-          meta: "PILLAR 01 // CHILD RIGHTS",
-          title: "Child Safeguarding & Protection",
-          body: "Protective systems work when obligations are explicit, response times are clear, and vulnerable young people are supported by clear safeguards.",
-          points: [
-            "Review safeguarding policies for ambiguity, gaps, and accountability.",
-            "Clarify reporting pathways and protective escalation steps.",
-            "Support child-centered standards and respectful communication."
-          ]
-        },
-        "human-dignity": {
-          meta: "PILLAR 02 // RIGHTS & JUSTICE",
-          title: "Human Dignity & Fair Process",
-          body: "Fair process requires clear notice, a fair opportunity to be heard, and respectful treatment across public and administrative settings.",
-          points: [
-            "Assess administrative and institutional processes for fairness and clarity.",
-            "Highlight procedural barriers that affect individuals and families.",
-            "Advocate for transparent standards and clear explanations."
-          ]
-        },
-        "institutional-oversight": {
-          meta: "PILLAR 03 // SYSTEMS & POLICY",
-          title: "Institutional Accountability",
-          body: "Structured documentation helps connect individual experiences with broader policy patterns and concrete follow-through.",
-          points: [
-            "Organize timelines and factual summaries grounded in records.",
-            "Track whether stated policies match everyday practice.",
-            "Focus on verifiable corrective steps."
-          ]
-        },
-        "youth-voice": {
-          meta: "PILLAR 04 // CHILD RIGHTS",
-          title: "Youth Voice & Participation",
-          body: "Young people affected by decisions deserve age-appropriate information and safe, respectful channels to share their views.",
-          points: [
-            "Keep safety and boundaries central when gathering youth input.",
-            "Use clear, accessible formats suited to young people.",
-            "Avoid tokenism and ensure thoughtful follow-up."
-          ]
-        },
-        "policy-reform": {
-          meta: "PILLAR 05 // SYSTEMS & POLICY",
-          title: "Policy & Standards Reform",
-          body: "Practical reform translates human rights principles into clear rules, checklists, and review standards.",
-          points: [
-            "Draft clear policy notes, governance language, and review criteria.",
-            "Align daily procedures with protective duties.",
-            "Encourage regular reviews so standards stay practical."
-          ]
-        },
-        "public-education": {
-          meta: "PILLAR 06 // RIGHTS & JUSTICE",
-          title: "Public Literacy & Advocacy",
-          body: "Clear, accurate information helps families, advocates, and communities understand rights and navigate processes.",
-          points: [
-            "Translate complex rules and rights into plain language.",
-            "Share clear, well-organized briefs with allies and groups.",
-            "Support constructive, well-documented public advocacy."
-          ]
-        }
-      };
-
-      const yearSpan = document.getElementById("yearSpan");
-      if (yearSpan) {
-        yearSpan.textContent = String(Math.max(2026, new Date().getFullYear()));
-      }
-
-      const toastEl = document.getElementById("toast");
-      let toastTimer = null;
-      function showToast(message) {
-        if (!toastEl) return;
-        toastEl.textContent = message;
-        toastEl.classList.add("show");
-        window.clearTimeout(toastTimer);
-        toastTimer = window.setTimeout(function () {
-          toastEl.classList.remove("show");
-        }, 2400);
-      }
-
-      function copyText(text, successMsg) {
-        if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-          navigator.clipboard.writeText(text).then(
-            function () {
-              showToast(successMsg);
-            },
-            function () {
-              fallbackCopy(text, successMsg);
-            }
-          );
-        } else {
-          fallbackCopy(text, successMsg);
-        }
-      }
-
-      function fallbackCopy(text, successMsg) {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          document.execCommand("copy");
-          showToast(successMsg);
-        } catch (_err) {
-          showToast("Copy unavailable — " + text);
-        }
-        document.body.removeChild(ta);
-      }
-
-      const copyEmailBtn = document.getElementById("copyEmailBtn");
-      if (copyEmailBtn) {
-        copyEmailBtn.addEventListener("click", function () {
-          copyText(CONTACT_EMAIL, "Copied: " + CONTACT_EMAIL);
-        });
-      }
-
-      const copyPhoneBtn = document.getElementById("copyPhoneBtn");
-      if (copyPhoneBtn) {
-        copyPhoneBtn.addEventListener("click", function () {
-          copyText(CONTACT_PHONE_DISPLAY, "Copied: " + CONTACT_PHONE_DISPLAY);
-        });
-      }
-
-      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-      const mobileDrawer = document.getElementById("mobileDrawer");
-
-      function setDrawerState(open) {
-        if (!mobileMenuBtn || !mobileDrawer) return;
-        mobileDrawer.classList.toggle("open", open);
-        mobileMenuBtn.setAttribute("aria-expanded", String(open));
-        mobileMenuBtn.textContent = open ? "Close" : "Menu";
-      }
-
-      if (mobileMenuBtn && mobileDrawer) {
-        mobileMenuBtn.addEventListener("click", function () {
-          setDrawerState(!mobileDrawer.classList.contains("open"));
-        });
-
-        document.querySelectorAll(".drawer-link").forEach(function (link) {
-          link.addEventListener("click", function () {
-            setDrawerState(false);
-          });
-        });
-
-        window.addEventListener("resize", function () {
-          if (window.innerWidth > 980) {
-            setDrawerState(false);
-          }
-        });
-      }
-
-      const filterBtns = document.querySelectorAll(".filter-btn");
-      const pillarCards = document.querySelectorAll(".pillar-card");
-
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          const filter = btn.getAttribute("data-filter") || "all";
-
-          filterBtns.forEach(function (b) {
-            b.classList.toggle("active", b === btn);
-          });
-
-          pillarCards.forEach(function (card) {
-            const cat = card.getAttribute("data-category");
-            const matches = filter === "all" || cat === filter;
-            card.classList.toggle("is-hidden", !matches);
-          });
-        });
-      });
-
-      pillarCards.forEach(function (card) {
-        card.addEventListener("pointermove", function (e) {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty("--mouse-x", x + "px");
-          card.style.setProperty("--mouse-y", y + "px");
-        });
-      });
-
-      const modalBackdrop = document.getElementById("pillarModal");
-      const modalMeta = document.getElementById("modalMeta");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalBody = document.getElementById("modalBody");
-      const modalPoints = document.getElementById("modalPoints");
-      const closeModalBtn = document.getElementById("closeModalBtn");
-      const modalContactBtn = document.getElementById("modalContactBtn");
-      let lastFocusedElement = null;
-
-      function openPillarModal(key) {
-        const item = PILLAR_DATA[key];
-        if (!item || !modalBackdrop) return;
-
-        lastFocusedElement = document.activeElement;
-        modalMeta.textContent = item.meta;
-        modalTitle.textContent = item.title;
-        modalBody.textContent = item.body;
-        modalPoints.innerHTML = "";
-
-        item.points.forEach(function (pt) {
-          const li = document.createElement("li");
-          li.textContent = pt;
-          modalPoints.appendChild(li);
-        });
-
-        modalBackdrop.classList.add("open");
-        if (closeModalBtn) closeModalBtn.focus();
-      }
-
-      function closePillarModal() {
-        if (!modalBackdrop) return;
-        modalBackdrop.classList.remove("open");
-        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-          lastFocusedElement.focus();
-          lastFocusedElement = null;
-        }
-      }
-
-      pillarCards.forEach(function (card) {
-        const key = card.getAttribute("data-pillar");
-        card.addEventListener("click", function () {
-          openPillarModal(key);
-        });
-        card.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openPillarModal(key);
-          }
-        });
-      });
-
-      if (closeModalBtn) closeModalBtn.addEventListener("click", closePillarModal);
-      if (modalContactBtn) {
-        modalContactBtn.addEventListener("click", function () {
-          closePillarModal();
-        });
-      }
-
-      if (modalBackdrop) {
-        modalBackdrop.addEventListener("click", function (e) {
-          if (e.target === modalBackdrop) {
-            closePillarModal();
-          }
-        });
-      }
-
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && modalBackdrop && modalBackdrop.classList.contains("open")) {
-          closePillarModal();
-        }
-      });
-
-      const revealEls = document.querySelectorAll(".reveal");
-      function revealAll() {
-        revealEls.forEach(function (el) {
-          el.classList.add("is-visible");
-        });
-      }
-
-      if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          function (entries, obs) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
-        );
-
-        revealEls.forEach(function (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.95) {
-            el.classList.add("is-visible");
-          } else {
-            observer.observe(el);
-          }
-        });
-
-        window.addEventListener("scroll", function () {
-          revealEls.forEach(function (el) {
-            if (!el.classList.contains("is-visible")) {
-              const rect = el.getBoundingClientRect();
-              if (rect.top < window.innerHeight) {
-                el.classList.add("is-visible");
-              }
-            }
-          });
-        }, { passive: true });
-      } else {
-        revealAll();
-      }
-
-      const contactForm = document.getElementById("contactForm");
-      const formStatus = document.getElementById("formStatus");
-      const copyMessageBtn = document.getElementById("copyMessageBtn");
-
-      function buildMessageText() {
-        const nameVal = (document.getElementById("senderName").value || "").trim();
-        const contactVal = (document.getElementById("senderEmail").value || "").trim();
-        const topicVal = (document.getElementById("topicSelect").value || "").trim();
-        const bodyVal = (document.getElementById("messageBody").value || "").trim();
-
-        return [
-          "To: " + CONTACT_EMAIL,
-          "Name: " + (nameVal || "[Your Name]"),
-          "Reply Contact: " + (contactVal || "[Email or Phone]"),
-          "Topic: " + topicVal,
-          "",
-          bodyVal || "[Message]"
-        ].join("\n");
-      }
-
-      function validateForm() {
-        const nameVal = (document.getElementById("senderName").value || "").trim();
-        const contactVal = (document.getElementById("senderEmail").value || "").trim();
-        const bodyVal = (document.getElementById("messageBody").value || "").trim();
-
-        if (!nameVal) {
-          formStatus.textContent = "Please enter your name.";
-          return false;
-        }
-        if (!contactVal) {
-          formStatus.textContent = "Please enter a reply email or phone number.";
-          return false;
-        }
-        if (!bodyVal) {
-          formStatus.textContent = "Please enter a message.";
-          return false;
-        }
-        return true;
-      }
-
-      if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          if (!validateForm()) return;
-
-          const nameVal = document.getElementById("senderName").value.trim();
-          const contactVal = document.getElementById("senderEmail").value.trim();
-          const topicVal = document.getElementById("topicSelect").value.trim();
-          const bodyVal = document.getElementById("messageBody").value.trim();
-
-          const subject = encodeURIComponent("Contact Us // " + topicVal);
-          const mailBody = encodeURIComponent(
-            "Name: " + nameVal + "\nReply Contact: " + contactVal + "\nTopic: " + topicVal + "\n\n" + bodyVal
-          );
-
-          formStatus.textContent = "Opening your email client...";
-          window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + mailBody;
-        });
-      }
-
-      if (copyMessageBtn) {
-        copyMessageBtn.addEventListener("click", function () {
-          copyText(buildMessageText(), "Message copied");
-          formStatus.textContent = "Message copied to clipboard.";
-        });
-      }
-    })();
-  </script>
-</body>
-</html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Julian La Fortune — Human Rights & Child Advocate." />
+<title>Julian La Fortune — Human Rights & Child Advocate</title>
+<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)" />
+<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+<link href="[https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap)" rel="stylesheet" />
+<style>
+:root {
+--bg: #050505;
+--surface: #0b0b0b;
+--surface-elevated: #111111;
+--text: #ffffff;
+--text-secondary: #bcbcbc;
+--text-muted: #828282;
+--border: rgba(255, 255, 255, 0.14);
+--border-strong: rgba(255, 255, 255, 0.28);
+--accent-bg: #ffffff;
+--accent-text: #050505;
+--focus-ring: #ffffff;
+--font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-serif: "Instrument Serif", Georgia, serif;
+--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+--radius-pill: 999px;
+--radius-sm: 2px;
+--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 5.5rem;
+background-color: var(--bg);
+color: var(--text);
+font-size: 16px;
+}
+body {
+margin: 0;
+padding: 0;
+min-height: 100vh;
+background-color: var(--bg);
+color: var(--text);
+font-family: var(--font-display);
+line-height: 1.65;
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+position: relative;
+}
+:focus-visible {
+outline: 2px solid var(--focus-ring);
+outline-offset: 3px;
+}
+.skip-link {
+position: fixed;
+top: -100px;
+left: 1rem;
+z-index: 100;
+background: var(--accent-bg);
+color: var(--accent-text);
+padding: 0.65rem 1.1rem;
+font-family: var(--font-mono);
+font-size: 0.75rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+text-decoration: none;
+transition: top 0.18s ease;
+}
+.skip-link:focus {
+top: 1rem;
+}
+/* Subtle monochrome architectural grid + grain */
+.bg-grid {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 0;
+background-image:
+linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+background-size: 64px 64px;
+mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
+-webkit-mask-image: radial-gradient(ellipse at 50% 18%, #000 32%, rgba(0, 0, 0, 0.42) 85%);
+}
+.bg-grain {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 1;
+opacity: 0.035;
+background-image: radial-gradient(rgba(255, 255, 255, 0.9) 0.6px, transparent 0.6px);
+background-size: 3px 3px;
+}
+.page-shell {
+position: relative;
+z-index: 2;
+width: 100%;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main {
+flex: 1 0 auto;
+}
+.container {
+width: 100%;
+max-width: 1240px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+/* Top Navigation Bar */
+.topbar {
+position: sticky;
+top: 0;
+z-index: 40;
+width: 100%;
+background: rgba(5, 5, 5, 0.92);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+max-width: 1240px;
+margin: 0 auto;
+padding: 0.95rem 2rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 1.5rem;
+}
+.brand-mark {
+display: inline-flex;
+align-items: center;
+gap: 0.7rem;
+text-decoration: none;
+color: var(--text);
+font-family: var(--font-mono);
+font-size: 0.78rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+white-space: nowrap;
+flex-shrink: 0;
+}
+.brand-mark-dot {
+width: 8px;
+height: 8px;
+background: var(--text);
+border-radius: 50%;
+display: inline-block;
+flex-shrink: 0;
+}
+.nav-links {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+list-style: none;
+}
+.nav-links a {
+color: var(--text-secondary);
+text-decoration: none;
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.25rem 0;
+border-bottom: 1px solid transparent;
+transition: color 0.2s ease, border-color 0.2s ease;
+white-space: nowrap;
+}
+.nav-links a:hover {
+color: var(--text);
+border-bottom-color: var(--text);
+}
+.nav-actions {
+display: flex;
+align-items: center;
+gap: 0.65rem;
+flex-shrink: 0;
+}
+.mobile-toggle {
+display: none;
+background: transparent;
+border: 1px solid var(--border-strong);
+color: var(--text);
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.55rem 0.9rem;
+border-radius: var(--radius-pill);
+cursor: pointer;
+}
+.mobile-drawer {
+display: none;
+border-top: 1px solid var(--border);
+background: var(--surface);
+padding: 1.25rem 2rem 1.75rem;
+}
+.mobile-drawer.open {
+display: block;
+}
+.mobile-drawer-links {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 0.85rem;
+margin-bottom: 1.25rem;
+}
+.mobile-drawer-links a {
+color: var(--text);
+text-decoration: none;
+font-family: var(--font-mono);
+font-size: 0.8rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+display: block;
+padding: 0.25rem 0;
+}
+.mobile-drawer-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.65rem;
+}
+/* Buttons */
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+padding: 0.68rem 1.2rem;
+border-radius: var(--radius-pill);
+font-family: var(--font-mono);
+font-size: 0.74rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+cursor: pointer;
+border: 1px solid var(--border-strong);
+background: transparent;
+color: var(--text);
+transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+white-space: nowrap;
+line-height: 1;
+}
+.btn:hover {
+background: rgba(255, 255, 255, 0.09);
+border-color: var(--text);
+}
+.btn:active {
+transform: translateY(1px);
+}
+.btn-primary {
+background: var(--accent-bg);
+color: var(--accent-text);
+border-color: var(--accent-bg);
+font-weight: 600;
+}
+.btn-primary:hover {
+background: #e6e6e6;
+border-color: #e6e6e6;
+color: var(--accent-text);
+}
+.btn-sm {
+padding: 0.52rem 0.95rem;
+font-size: 0.69rem;
+}
+/* Kinetic Ticker Banner */
+.ticker {
+width: 100%;
+overflow: hidden;
+border-bottom: 1px solid var(--border);
+background: var(--surface);
+}
+.ticker-track {
+display: flex;
+width: max-content;
+animation: tickerScroll 34s linear infinite;
+will-change: transform;
+}
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track {
+animation-play-state: paused;
+}
+.ticker-group {
+display: flex;
+align-items: center;
+gap: 2.25rem;
+padding: 0.68rem 1.125rem;
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-secondary);
+white-space: nowrap;
+}
+.ticker-sep {
+color: var(--text-muted);
+}
+@keyframes tickerScroll {
+0% { transform: translate3d(0, 0, 0); }
+100% { transform: translate3d(-50%, 0, 0); }
+}
+/* Hero Section */
+.hero {
+padding: 4.5rem 0 4rem;
+border-bottom: 1px solid var(--border);
+}
+.hero-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.85fr);
+gap: 3rem;
+align-items: start;
+}
+.eyebrow-row {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+gap: 1rem;
+margin-bottom: 1.75rem;
+font-family: var(--font-mono);
+font-size: 0.74rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-secondary);
+}
+.status-indicator {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+}
+.status-dot {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: var(--text);
+display: inline-block;
+}
+.hero-name {
+font-family: var(--font-display);
+font-weight: 700;
+font-size: clamp(3.1rem, 7.2vw, 6.1rem);
+line-height: 0.96;
+letter-spacing: -0.04em;
+text-transform: uppercase;
+color: var(--text);
+margin-bottom: 1.4rem;
+}
+.hero-name-line {
+display: block;
+}
+.hero-role {
+font-size: clamp(1.12rem, 2vw, 1.45rem);
+font-weight: 500;
+color: var(--text);
+letter-spacing: -0.01em;
+margin-bottom: 1.25rem;
+}
+.hero-mission {
+font-size: 1.04rem;
+line-height: 1.75;
+color: var(--text-secondary);
+max-width: 65ch;
+margin-bottom: 1rem;
+}
+.hero-mission + .hero-mission {
+margin-bottom: 2.1rem;
+}
+.hero-cta-group {
+display: flex;
+flex-wrap: wrap;
+gap: 0.85rem;
+}
+/* Profile Snapshot Card */
+.snapshot-card {
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 1.75rem;
+display: flex;
+flex-direction: column;
+gap: 1.25rem;
+}
+.snapshot-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--border);
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-secondary);
+}
+.snapshot-item {
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+padding-bottom: 0.95rem;
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.snapshot-item:last-child {
+padding-bottom: 0;
+border-bottom: none;
+}
+.snapshot-label {
+font-family: var(--font-mono);
+font-size: 0.68rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-muted);
+}
+.snapshot-value {
+font-size: 0.95rem;
+color: var(--text);
+line-height: 1.5;
+}
+.snapshot-value a {
+color: var(--text);
+text-decoration: none;
+border-bottom: 1px solid var(--border-strong);
+padding-bottom: 1px;
+}
+.snapshot-value a:hover {
+border-bottom-color: var(--text);
+}
+/* Sections */
+.section {
+padding: 4.75rem 0;
+border-bottom: 1px solid var(--border);
+}
+.section-header {
+display: flex;
+flex-wrap: wrap;
+align-items: flex-end;
+justify-content: space-between;
+gap: 1.5rem;
+margin-bottom: 2.5rem;
+}
+.section-index {
+font-family: var(--font-mono);
+font-size: 0.74rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--text-muted);
+margin-bottom: 0.55rem;
+display: block;
+}
+.section-title {
+font-size: clamp(1.9rem, 3.8vw, 3rem);
+font-weight: 600;
+letter-spacing: -0.03em;
+line-height: 1.08;
+color: var(--text);
+}
+.section-lead {
+max-width: 68ch;
+color: var(--text-secondary);
+font-size: 1rem;
+line-height: 1.72;
+margin-bottom: 2.25rem;
+}
+/* Mission Two-Column Breakdown */
+.mission-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 1.5rem;
+}
+.mission-panel {
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 2rem;
+display: flex;
+flex-direction: column;
+gap: 0.9rem;
+}
+.mission-panel-tag {
+font-family: var(--font-mono);
+font-size: 0.7rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-muted);
+}
+.mission-panel-title {
+font-size: 1.3rem;
+font-weight: 600;
+letter-spacing: -0.02em;
+color: var(--text);
+}
+.mission-panel p {
+color: var(--text-secondary);
+font-size: 0.96rem;
+line-height: 1.7;
+}
+/* Filter Bar */
+.filter-bar {
+display: inline-flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+padding: 0.3rem;
+border: 1px solid var(--border);
+background: var(--surface);
+}
+.filter-btn {
+background: transparent;
+border: 1px solid transparent;
+color: var(--text-secondary);
+font-family: var(--font-mono);
+font-size: 0.7rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.5rem 0.9rem;
+cursor: pointer;
+transition: background-color 0.2s ease, color 0.2s ease;
+}
+.filter-btn:hover {
+color: var(--text);
+}
+.filter-btn.active {
+background: var(--accent-bg);
+color: var(--accent-text);
+font-weight: 600;
+}
+/* Pillars Grid */
+.pillars-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1.25rem;
+}
+.pillar-card {
+position: relative;
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 1.75rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap: 1.5rem;
+cursor: pointer;
+transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+overflow: hidden;
+text-align: left;
+}
+.pillar-card.is-hidden {
+display: none;
+}
+.pillar-card::before {
+content: "";
+position: absolute;
+inset: 0;
+pointer-events: none;
+background: radial-gradient(
+420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+rgba(255, 255, 255, 0.08),
+transparent 65%
+);
+opacity: 0;
+transition: opacity 0.25s ease;
+}
+.pillar-card:hover,
+.pillar-card:focus-within {
+border-color: var(--border-strong);
+background: var(--surface-elevated);
+transform: translateY(-3px);
+}
+.pillar-card:hover::before {
+opacity: 1;
+}
+.pillar-meta {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 0.75rem;
+font-family: var(--font-mono);
+font-size: 0.7rem;
+letter-spacing: 0.13em;
+text-transform: uppercase;
+color: var(--text-muted);
+}
+.pillar-title {
+font-size: 1.32rem;
+font-weight: 600;
+letter-spacing: -0.02em;
+color: var(--text);
+margin-top: 0.85rem;
+margin-bottom: 0.65rem;
+}
+.pillar-summary {
+font-size: 0.94rem;
+color: var(--text-secondary);
+line-height: 1.65;
+}
+.pillar-deliverables {
+margin-top: 1rem;
+padding-left: 1.1rem;
+color: var(--text-secondary);
+font-size: 0.88rem;
+line-height: 1.55;
+}
+.pillar-deliverables li + li {
+margin-top: 0.3rem;
+}
+.pillar-footer {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-top: 1rem;
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--text);
+}
+/* Methodology & Table Section */
+.methodology-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 1.25rem;
+margin-bottom: 2.5rem;
+}
+.step-card {
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 1.6rem;
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+}
+.step-num {
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--text-muted);
+}
+.step-title {
+font-size: 1.15rem;
+font-weight: 600;
+color: var(--text);
+letter-spacing: -0.015em;
+}
+.step-desc {
+font-size: 0.92rem;
+color: var(--text-secondary);
+line-height: 1.62;
+}
+.data-table-wrap {
+width: 100%;
+overflow-x: auto;
+background: var(--surface);
+border: 1px solid var(--border);
+}
+table.ledger-table {
+width: 100%;
+border-collapse: collapse;
+text-align: left;
+min-width: 680px;
+}
+.ledger-table th,
+.ledger-table td {
+padding: 1rem 1.25rem;
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+vertical-align: top;
+}
+.ledger-table th {
+font-family: var(--font-mono);
+font-size: 0.7rem;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text-muted);
+background: var(--surface-elevated);
+border-bottom: 1px solid var(--border);
+}
+.ledger-table td {
+font-size: 0.93rem;
+color: var(--text-secondary);
+line-height: 1.55;
+}
+.ledger-table td strong {
+color: var(--text);
+font-weight: 600;
+}
+.ledger-table tbody tr:last-child td {
+border-bottom: none;
+}
+/* Legal & Recognition Section */
+.recognition-layout {
+display: grid;
+grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+gap: 2rem;
+align-items: stretch;
+}
+.plaque {
+background: var(--surface);
+border: 1px solid var(--border-strong);
+padding: 2.25rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap: 1.75rem;
+}
+.plaque-source {
+font-family: var(--font-mono);
+font-size: 0.72rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--text-muted);
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--border);
+}
+.plaque-quote {
+font-family: var(--font-serif);
+font-style: italic;
+font-size: clamp(1.65rem, 3vw, 2.35rem);
+line-height: 1.25;
+color: var(--text);
+letter-spacing: -0.01em;
+}
+.plaque-attribution {
+display: flex;
+flex-direction: column;
+gap: 0.25rem;
+padding-top: 1.25rem;
+border-top: 1px solid var(--border);
+}
+.plaque-judge {
+font-size: 1rem;
+font-weight: 600;
+color: var(--text);
+}
+.plaque-detail {
+font-family: var(--font-mono);
+font-size: 0.74rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--text-secondary);
+}
+.affiliations-panel {
+background: var(--surface);
+border: 1px solid var(--border);
+padding: 2.25rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap: 1.5rem;
